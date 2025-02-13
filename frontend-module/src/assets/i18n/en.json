@@ -1,24 +1,64 @@
 {
     "LOGIN": {
+        "WELCOME_MSG": "Log in to your account",
         "USERNAME": "Username",
         "PASSWORD": "Password",
-        "BUTTON_LOGIN": "Enter",
-        "BUTTON_LOGOUT": "Logout"
+        "BUTTON_LOGIN": "Log In",
+        "BUTTON_LOGOUT": "Log Out"
     },
     "ANALYTICS": {
-        "WELCOME_MSG": "Here is what’s happening with Orca today:",
-        "CLEAR_FILTER": "Clear Filter"
+        "WELCOME_MSG": "Welcome",
+        "WELCOME_DETAIL_MSG": "Here is what's happening with Dunder Mifflin today:",
+        "CLEAR_FILTER": "Clear Filters"
     },
     "COMMON": {
-        "NEW": "Novo",
-        "UPDATE": "Atualizar",
-        "DELETE": "Excluir",
-        "IMPORT": "Importar",
-        "EXPORT": "Exportar",
-        "SEARCH": "Buscar...",
-        "TABLE_PAGING": "Showing {first} to {last} of {totalRecords} entries"
+        "NEW": "New",
+        "BACK": "Back",
+        "UPDATE": "Update",
+        "DELETE": "Delete",
+        "IMPORT": "Import",
+        "EXPORT": "Export",
+        "FEATURES": "Features",
+        "SEARCH": "Search...",
+        "TABLE_PAGING": "Displaying {first} to {last} of {totalRecords} entries",
+        "FIELD_NAME": "Name",
+        "FIELD_VERSION": "Version",
+        "FIELD_OWNER": "Owner",
+        "FIELD_STATUS": "Status",
+        "FIELD_CREATED_AT": "Created At",
+        "FIELD_UPDATED_AT": "Updated At",
+        "FIELD_REQUIRED": "Field is required.",
+        "FIELD_USERNAME": "Username",
+        "FIELD_PASSWORD": "Password",
+        "FIELD_PROFILE": "Profile",
+        "FIELD_EMAIL": "Email",
+        "FIELD_FIRSTNAME": "First Name",
+        "FIELD_LASTNAME": "Last Name",
+        "FIELD_DESCRIPTION": "Description",
+        "FIELD_EXPIRED_AT": "Expires At",
+        "BUTTON_CANCEL": "Cancel",
+        "BUTTON_SAVE": "Save",
+        "BUTTON_CONFIRM": "Confirm",
+        "CONFIRM_MESSAGE": "Confirmed",
+        "COPY_CLIPBOARD": "Copied to clipboard successfully!"
     },
-    "ACCOUNTS": {
-        "MANAGE": "Contas"
+    "MENU": {
+        "FEATURES": "Features",
+        "DASHBOARD": "Dashboards",
+        "ANALYTICS": "Analytics",
+        "EMPLOYEES": "Employees",
+        "ACTIVITIES": "Activities",
+        "CONFIGURATION": "Configuration",
+        "OPTIONS": "Options",
+        "LOGOUT": "Log Out"
+    },
+    "STATUS": {
+        "ACTIVE": "Active",
+        "INACTIVE": "Inactive",
+        "UNKNOWN": "Unknown"
+    },
+    "CONFIRMATIONS": {
+        "HEADER": "Are you sure?",
+        "MESSAGE": "Please confirm to proceed."
     }
 }

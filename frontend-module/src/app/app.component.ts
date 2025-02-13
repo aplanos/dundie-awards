@@ -18,7 +18,6 @@ import { BroadcasterService } from '@core/services/broadcaster.service';
 })
 export class AppComponent {
 
-
     $destroy: Subject<void> = new Subject();
 
     constructor(private broadcaster: BroadcasterService,
@@ -26,8 +25,8 @@ export class AppComponent {
                 private messageService: MessageService,
                 private primengConfig: PrimeNGConfig) {
         this.primengConfig.setTranslation(new PrimeNGTranslationPt());
-        this.translate.setDefaultLang('pt');
-        this.translate.use('pt');
+        this.translate.setDefaultLang('en');
+        this.translate.use('en');
 
         /**
          * do this in other page, for e.g I'm doing here only
