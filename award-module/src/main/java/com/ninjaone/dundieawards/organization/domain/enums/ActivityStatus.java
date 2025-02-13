@@ -1,9 +1,8 @@
 package com.ninjaone.dundieawards.organization.domain.enums;
 
-public enum JobStatus {
+public enum ActivityStatus {
     PENDING,
     RUNNING,
-    IDLE,
     PAUSED,
     SUCCEEDED,
     FAILED,

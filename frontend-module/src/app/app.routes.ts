@@ -12,7 +12,13 @@ export const routes: Routes = [
         path: 'employee',
         component: AppLayoutComponent,
         loadChildren: () => import('./features/employee/employee.module').then((m) => m.EmployeeModule),
-        data: { group: 'MENU.CRM', title: 'MENU.CUSTOMERS', icon: 'pi pi-fw pi-user', permissions: [] }
+        data: { group: 'MENU.FEATURES', title: 'MENU.EMPLOYEES', icon: 'pi pi-fw pi-user', permissions: [] }
+    },
+    {
+        path: 'activity',
+        component: AppLayoutComponent,
+        loadChildren: () => import('./features/activity/activity.module').then((m) => m.ActivityModule),
+        data: { group: 'MENU.FEATURES', title: 'MENU.ACTIVITIES', icon: 'pi pi-fw pi-cog', permissions: [] }
     },
     {
         path: 'login',

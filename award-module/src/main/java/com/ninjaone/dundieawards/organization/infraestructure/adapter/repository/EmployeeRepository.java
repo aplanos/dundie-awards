@@ -1,6 +1,5 @@
 package com.ninjaone.dundieawards.organization.infraestructure.adapter.repository;
 
-import com.ninjaone.dundieawards.organization.application.dto.AwardSummaryStats;
 import com.ninjaone.dundieawards.organization.domain.entity.Employee;
 import com.ninjaone.dundieawards.organization.infraestructure.adapter.repository.projection.AwardSummaryStatsProjection;
 import org.springframework.data.jpa.repository.JpaRepository;

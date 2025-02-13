@@ -1,10 +1,9 @@
 package com.ninjaone.dundieawards.organization.domain.specification;
 
-import com.ninjaone.dundieawards.organization.domain.entity.Employee;
 import org.springframework.data.jpa.domain.Specification;
 
-public class EmployeeSpecification {
-    public static Specification<Employee> hasOrganizationId(Long organizationId) {
+public class TenantSpecification {
+    public static <T> Specification<T> hasOrganizationId(Long organizationId) {
         return (root, query, builder) -> {
             if (organizationId == null) {
                 return builder.conjunction();

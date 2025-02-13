@@ -5,7 +5,7 @@ import com.ninjaone.dundieawards.organization.application.dto.AwardSummaryStats;
 import com.ninjaone.dundieawards.organization.application.dto.EmployeeModel;
 import com.ninjaone.dundieawards.organization.application.service.EmployeeService;
 import com.ninjaone.dundieawards.organization.domain.entity.Employee;
-import com.ninjaone.dundieawards.organization.domain.specification.EmployeeSpecification;
+import com.ninjaone.dundieawards.organization.domain.specification.TenantSpecification;
 import com.ninjaone.dundieawards.organization.infraestructure.adapter.repository.EmployeeRepository;
 import jakarta.persistence.EntityNotFoundException;
 import org.modelmapper.ModelMapper;
@@ -36,7 +36,7 @@ public class EmployeeServiceImpl implements EmployeeService {
     public Page<EmployeeModel> findAllByOrganizationId(int page, int pageSize, long organizationId) {
         return findAll(page, pageSize,
                 Arrays.asList("organizationId", "firstName"),
-                EmployeeSpecification.hasOrganizationId(organizationId)
+                TenantSpecification.hasOrganizationId(organizationId)
         );
     }
 

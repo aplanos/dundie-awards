@@ -4,7 +4,6 @@ import com.ninjaone.dundieawards.organization.application.dto.EmployeeModel;
 import com.ninjaone.dundieawards.organization.application.service.EmployeeService;
 import com.ninjaone.dundieawards.organization.domain.event.DomainEvent;
 import com.ninjaone.dundieawards.organization.domain.event.DomainEventType;
-import com.ninjaone.dundieawards.organization.domain.event.increase_dundie_awards.IncreaseDundieAwardsEvent;
 import com.ninjaone.dundieawards.organization.domain.event.increase_dundie_awards.IncreaseDundieAwardsEventV1;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
@@ -13,7 +12,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
-import java.util.Objects;
 import java.util.stream.Collectors;
 
 @Slf4j
@@ -35,15 +33,16 @@ public class UpdateDundieAwardsMessageHandler implements MessageHandler {
         log.info("Handling INCREASE_DUNDIE_AWARDS message: {}", message);
 
         if (message instanceof IncreaseDundieAwardsEventV1) {
-            final var organizationId = Long.parseLong(message.body().get("organizationId"));
-            processEmployeesByPage(organizationId);
+            final var organizationIdStr = message.body().get("organizationId");
+            final var organizationId = Long.parseLong(organizationIdStr);
+            processEmployeesInBatch(organizationId);
         } else {
             log.error("Update Dundie Awards Message version is not supported");
         }
     }
 
     @Transactional
-    public void processEmployeesByPage(long organizationId) {
+    public void processEmployeesInBatch(long organizationId) {
         int pageNumber = 0;
         Page<EmployeeModel> page;
 

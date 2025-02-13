@@ -4,25 +4,26 @@ import { CurrencyPipe } from '@angular/common';
 import { Page } from '@core/models/paging.model';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { EmployeeModel } from '@core/models/employee.model';
-import { EmployeeService } from '@core/services/employee.service';
+import { ActivityService } from '@core/services/activity.service';
+import {ActivityModel} from "@core/models/activity.model";
 
 @Component({
-    selector: 'app-employee',
-    templateUrl: './employee.component.html',
-    styleUrls: ['./employee.component.scss'],
+    selector: 'app-activity',
+    templateUrl: './activity.component.html',
+    styleUrls: ['./activity.component.scss'],
     providers: [CurrencyPipe]
 })
-export class EmployeeComponent {
+export class ActivityComponent {
 
     query = '';
-    page = new Page<EmployeeModel>();
+    page = new Page<ActivityModel>();
     loading = true;
 
     entityForm: FormGroup;
 
     constructor(
         private fb: FormBuilder,
-        private employeeService: EmployeeService,
+        private activityService: ActivityService,
         private router: Router) {
         this.entityForm = this.fb.group({
             name: ['', Validators.required]
@@ -34,8 +35,8 @@ export class EmployeeComponent {
 
         const offset = pageInfo?.rows > 0 ? (pageInfo.first / pageInfo.rows) : 0;
 
-        this.employeeService.get(offset, this.query).subscribe({
-            next: (page: Page<EmployeeModel>) => {
+        this.activityService.get(offset, this.query).subscribe({
+            next: (page: Page<ActivityModel>) => {
                 this.page = page;
                 this.loading = false;
             },

@@ -29,7 +29,11 @@ public class CustomUserDetailsService implements UserDetailsService {
                 .orElseThrow(() -> new UsernameNotFoundException(username));
 
 
-        List<GrantedAuthority> authorities = Stream.of("employee_manage", "organization_manage")
+        List<GrantedAuthority> authorities = Stream.of(
+                "employee_manage",
+                        "organization_manage",
+                        "activity_manage"
+                )
                 .map(SimpleGrantedAuthority::new)
                 .collect(Collectors.toList());
 
