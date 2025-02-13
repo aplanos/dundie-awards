@@ -12,7 +12,7 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-amqp'
 	implementation 'org.springframework.boot:spring-boot-starter-security'
 	implementation 'org.springframework.boot:spring-boot-starter-quartz'
-
+	implementation 'org.springframework.boot:spring-boot-starter-data-redis'
 
 	implementation "io.jsonwebtoken:jjwt-api:${versions.jsonwebtoken}"
 	implementation "io.jsonwebtoken:jjwt-impl:${versions.jsonwebtoken}"

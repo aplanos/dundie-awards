@@ -15,7 +15,6 @@ public class OrganizationController {
         this.organizationEventPublisher = organizationEventPublisher;
     }
 
-
     @PostMapping(value = "/give-dundie-awards/{organizationId}")
     public ResponseEntity<?> giveDundieAwards(@PathVariable Long organizationId) {
         organizationEventPublisher.publishIncreaseDundieAwardsEvent(

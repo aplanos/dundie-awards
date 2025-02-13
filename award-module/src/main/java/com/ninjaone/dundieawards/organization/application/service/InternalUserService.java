@@ -2,10 +2,9 @@ package com.ninjaone.dundieawards.organization.application.service;
 
 
 import com.ninjaone.dundieawards.organization.domain.entity.InternalUser;
-import com.ninjaone.dundieawards.organization.infraestructure.adapter.persistence.InternalUserRepository;
+import com.ninjaone.dundieawards.organization.infraestructure.adapter.repository.InternalUserRepository;
 import org.springframework.stereotype.Service;
 
-import java.lang.reflect.Array;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;

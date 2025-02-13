@@ -5,6 +5,7 @@ import com.ninjaone.dundieawards.organization.application.service.messaging.Mess
 import com.ninjaone.dundieawards.organization.domain.event.increase_dundie_awards.IncreaseDundieAwardsEvent;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Slf4j
@@ -13,6 +14,7 @@ public class RabbitMqOrganizationEventListener {
 
     private final MessageRouter messageRouter;
 
+    @Autowired
     public RabbitMqOrganizationEventListener(MessageRouter messageRouter) {
         this.messageRouter = messageRouter;
     }

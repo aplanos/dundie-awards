@@ -22,3 +22,10 @@ services:
       - "15672:15672"
     volumes:
       - ./docker/postgres/data:/var/lib/rabbitmq
+  redis:
+    image: redis:7.0
+    container_name: redis
+    ports:
+      - "6379:6379"
+    volumes:
+      - ./docker/redis/data:/data

@@ -1,4 +1,4 @@
-package com.ninjaone.dundieawards.organization.infraestructure.adapter.quartz;
+package com.ninjaone.dundieawards.organization.infraestructure.quartz;
 
 import com.ninjaone.dundieawards.organization.application.service.messaging.MessageRouter;
 import com.ninjaone.dundieawards.organization.domain.event.DomainEvent;
@@ -19,6 +19,7 @@ public class MessageBrokerSubscriptionJob implements Job {
     private final MessageBroker messageBroker;
     private final MessageRouter messageRouter;
 
+    @Autowired
     public MessageBrokerSubscriptionJob(MessageBroker messageBroker,
                                         MessageRouter messageRouter) {
         this.messageBroker = messageBroker;

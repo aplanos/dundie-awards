@@ -1,13 +1,16 @@
 package com.ninjaone.dundieawards.organization.application.service.impl;
 
 import com.ninjaone.dundieawards.common.utils.MapperUtils;
+import com.ninjaone.dundieawards.organization.application.dto.AwardSummaryStats;
 import com.ninjaone.dundieawards.organization.application.dto.EmployeeModel;
 import com.ninjaone.dundieawards.organization.application.service.EmployeeService;
 import com.ninjaone.dundieawards.organization.domain.entity.Employee;
 import com.ninjaone.dundieawards.organization.domain.specification.EmployeeSpecification;
-import com.ninjaone.dundieawards.organization.infraestructure.adapter.persistence.EmployeeRepository;
+import com.ninjaone.dundieawards.organization.infraestructure.adapter.repository.EmployeeRepository;
 import jakarta.persistence.EntityNotFoundException;
 import org.modelmapper.ModelMapper;
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.PageRequest;
@@ -81,7 +84,15 @@ public class EmployeeServiceImpl implements EmployeeService {
 
     @Override
     @Transactional
+    @CacheEvict(value = "awards-summary-stats", allEntries = true)
     public void updateEmployeesAwards(Set<Long> employeeIds, long amount) {
         employeeRepository.updateEmployeesAwards(employeeIds, amount);
+    }
+
+    @Override
+    @Cacheable(value = "awards-summary-stats")
+    public AwardSummaryStats getTotalEmployeesAwards() {
+        final var stats = employeeRepository.getAwardSummaryStats();
+        return MapperUtils.mapTo(stats, AwardSummaryStats.class);
     }
 }

@@ -1,6 +1,6 @@
 package com.ninjaone.dundieawards.organization.infraestructure.security;
 
-import com.ninjaone.dundieawards.organization.infraestructure.adapter.persistence.InternalUserRepository;
+import com.ninjaone.dundieawards.organization.infraestructure.adapter.repository.InternalUserRepository;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.User;

@@ -28,7 +28,7 @@ import java.util.Map;
 @Slf4j
 @Configuration
 @EnableTransactionManagement
-@EnableJpaRepositories(basePackages = "com.ninjaone.dundieawards.organization.infraestructure.adapter.persistence",
+@EnableJpaRepositories(basePackages = "com.ninjaone.dundieawards.organization.infraestructure.adapter.repository",
         entityManagerFactoryRef = "organizationEntityManagerFactory",
         transactionManagerRef= "organizationTransactionManager"
 )

@@ -1,4 +1,4 @@
-package com.ninjaone.dundieawards.organization.infraestructure.adapter.persistence;
+package com.ninjaone.dundieawards.organization.infraestructure.adapter.repository;
 
 import com.ninjaone.dundieawards.organization.domain.entity.InternalUser;
 import org.springframework.data.jpa.repository.JpaRepository;

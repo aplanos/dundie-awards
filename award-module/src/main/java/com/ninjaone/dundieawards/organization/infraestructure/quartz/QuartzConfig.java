@@ -1,4 +1,4 @@
-package com.ninjaone.dundieawards.organization.infraestructure.adapter.quartz;
+package com.ninjaone.dundieawards.organization.infraestructure.quartz;
 
 import org.quartz.Scheduler;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;

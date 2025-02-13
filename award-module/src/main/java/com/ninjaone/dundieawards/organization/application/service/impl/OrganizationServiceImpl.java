@@ -3,7 +3,7 @@ package com.ninjaone.dundieawards.organization.application.service.impl;
 import com.ninjaone.dundieawards.common.utils.MapperUtils;
 import com.ninjaone.dundieawards.organization.application.dto.OrganizationModel;
 import com.ninjaone.dundieawards.organization.application.service.OrganizationService;
-import com.ninjaone.dundieawards.organization.infraestructure.adapter.persistence.OrganizationRepository;
+import com.ninjaone.dundieawards.organization.infraestructure.adapter.repository.OrganizationRepository;
 import jakarta.persistence.EntityNotFoundException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.web.PagedModel;
