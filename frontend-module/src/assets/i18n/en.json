@@ -1,0 +1,24 @@
+{
+    "LOGIN": {
+        "USERNAME": "Username",
+        "PASSWORD": "Password",
+        "BUTTON_LOGIN": "Enter",
+        "BUTTON_LOGOUT": "Logout"
+    },
+    "ANALYTICS": {
+        "WELCOME_MSG": "Here is what’s happening with Orca today:",
+        "CLEAR_FILTER": "Clear Filter"
+    },
+    "COMMON": {
+        "NEW": "Novo",
+        "UPDATE": "Atualizar",
+        "DELETE": "Excluir",
+        "IMPORT": "Importar",
+        "EXPORT": "Exportar",
+        "SEARCH": "Buscar...",
+        "TABLE_PAGING": "Showing {first} to {last} of {totalRecords} entries"
+    },
+    "ACCOUNTS": {
+        "MANAGE": "Contas"
+    }
+}

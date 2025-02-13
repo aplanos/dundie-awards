@@ -1,0 +1,26 @@
+@import "../assets/layout/styles/layout/layout.css";
+
+@import "primeicons/primeicons.css";
+@import "primeng/resources/primeng.min.css";
+@import "primeflex/primeflex.min.css";
+
+@import "badges.scss";
+
+
+.input-class {
+    font-size: 1rem; /* Equivalent to text-base */
+    color: var(--text-color); /* Equivalent to text-color */
+    background-color: var(--surface-overlay); /* Equivalent to surface-overlay */
+    padding: 0.5rem; /* Equivalent to p-2 */
+    border-width: 1px; /* Equivalent to border-1 */
+    border-style: solid; /* Equivalent to border-solid */
+    border-color: var(--surface-border); /* Equivalent to surface-border */
+    border-radius: 0.375rem; /* Equivalent to border-round */
+    appearance: none; /* Equivalent to appearance-none */
+    outline: none; /* Equivalent to outline-none */
+    width: 100%; /* Equivalent to w-full */
+
+    &:focus {
+        border-color: var(--primary); /* Equivalent to focus:border-primary */
+    }
+}

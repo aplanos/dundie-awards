@@ -1,0 +1,33 @@
+<div class="flex justify-content-center flex-wrap align-items-center" style="height: 80vh">
+    <div class="surface-card p-4 shadow-2 border-round w-full lg:max-w-fit ">
+        <div class="text-center mb-5">
+            <img src="assets/layout/images/logo-dark.svg" alt="Image" height="50" class="mb-3">
+            <div class="text-900 text-3xl font-medium mb-3">{{ 'LOGIN.WELCOME_MSG' | translate }}</div>
+        </div>
+
+        <div [formGroup]="entityForm" >
+            <label for="email1" class="block text-900 font-medium mb-2">{{ 'LOGIN.USERNAME' | translate }}</label>
+            <input id="email1" type="text"
+                   placeholder="{{ 'LOGIN.USERNAME' | translate }}"
+                   pInputText class="w-full mb-3" formControlName="username"
+            >
+
+            <label for="password1" class="block text-900 font-medium mb-2">{{ 'LOGIN.PASSWORD' | translate }}</label>
+            <input id="password1" type="password"
+                   placeholder="{{ 'LOGIN.PASSWORD' | translate }}"
+                   formControlName="password"
+                   pInputText class="w-full mb-3">
+
+            <!--div class="flex align-items-center justify-content-between mb-6">
+                <div class="flex align-items-center">
+                    <p-checkbox id="rememberme1" [binary]="true" styleClass="mr-2"></p-checkbox>
+                    <label for="rememberme1" class="text-900">Remember me</label>
+                </div>
+                <a class="font-medium no-underline ml-2 text-blue-500 text-right cursor-pointer">Forgot password?</a>
+            </div-->
+
+            <button pButton pRipple label="{{ 'LOGIN.BUTTON_LOGIN' | translate }}" (click)="login()"
+                    icon="pi pi-user" class="w-full"></button>
+        </div>
+    </div>
+</div>

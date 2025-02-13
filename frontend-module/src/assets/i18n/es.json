@@ -1,0 +1,11 @@
+{
+    "LOGIN": {
+        "USERNAME": "Usuario",
+        "PASSWORD": "Contraseña",
+        "BUTTON_LOGIN": "Entrar",
+        "BUTTON_LOGOUT": "Cerrar Sesión"
+    },
+    "ANALYTICS": {
+        "WELCOME_MSG": "Here is what’s happening with Orca today:"
+    }
+}

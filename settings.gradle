@@ -1,1 +1,5 @@
-rootProject.name = 'dundie_awards'
+rootProject.name = 'dundie-awards-project'
+
+include 'common-module'
+include 'award-module'
+include 'messaging-module'

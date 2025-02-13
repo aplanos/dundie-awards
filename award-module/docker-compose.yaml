@@ -1,0 +1,24 @@
+version: '3'
+
+services:
+  postgresql:
+    image: postgres:16.3
+    environment:
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_USER=postgres
+      - POSTGRES_DB=dundie_awards_organization
+    ports:
+      - "5434:5432"
+    volumes:
+      - ./docker/postgres/data:/var/lib/postgresql/data
+  queue:
+    image: rabbitmq:3.12-management
+    container_name: rabbitmq
+    environment:
+      - RABBITMQ_DEFAULT_USER=guest
+      - RABBITMQ_DEFAULT_PASS=guest
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+    volumes:
+      - ./docker/postgres/data:/var/lib/rabbitmq
