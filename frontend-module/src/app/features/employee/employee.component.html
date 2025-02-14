@@ -33,32 +33,37 @@
                      selectionMode="multiple">
                 <ng-template pTemplate="caption">
                     <div class="flex flex-column md:flex-row md:justify-content-between md:align-items-center">
-                        <h5 class="m-0">{{ 'USERS.MANAGE' | translate }}</h5>
+                        <h5 class="m-0">{{ 'COMMON.MANAGE' | translate }}</h5>
                     </div>
                 </ng-template>
                 <ng-template pTemplate="header">
                     <tr>
-                        <th pSortableColumn="name">{{ 'COMMON.FIELD_NAME' | translate }} <p-sortIcon field="firstName"></p-sortIcon></th>
-                        <th pSortableColumn="name">{{ 'COMMON.FIELD_USERNAME' | translate }} <p-sortIcon field="lastName"></p-sortIcon></th>
-                        <th pSortableColumn="createdAt">{{ 'COMMON.FIELD_CREATED_AT' | translate }} <p-sortIcon field="dundieAwards"></p-sortIcon></th>
-                        <th pSortableColumn="createdAt">{{ 'COMMON.FIELD_UPDATED_AT' | translate }} <p-sortIcon field="organizationId"></p-sortIcon></th>
+                        <th pSortableColumn="name">{{ 'COMMON.FIELD_FIRSTNAME' | translate }} <p-sortIcon field="firstName"></p-sortIcon></th>
+                        <th pSortableColumn="name">{{ 'COMMON.FIELD_LASTNAME' | translate }} <p-sortIcon field="lastName"></p-sortIcon></th>
+                        <th pSortableColumn="createdAt">{{ 'EMPLOYEE.AWARDS' | translate }} <p-sortIcon field="dundieAwards"></p-sortIcon></th>
+                        <th pSortableColumn="createdAt">{{ 'EMPLOYEE.ORGANIZATION_ID' | translate }} <p-sortIcon field="organizationId"></p-sortIcon></th>
+                        <th pSortableColumn="createdAt">{{ 'EMPLOYEE.ORGANIZATION_NAME' | translate }} <p-sortIcon field="organizationId"></p-sortIcon></th>
                         <th></th>
                     </tr>
                 </ng-template>
                 <ng-template pTemplate="body" let-row>
                     <tr>
-                        <td style="width:14%; min-width:10rem;"><span class="p-column-title">{{ 'COMMON.FIELD_NAME' | translate }} </span>
+                        <td style="width:14%; min-width:10rem;"><span class="p-column-title">{{ 'COMMON.FIELD_FIRSTNAME' | translate }} </span>
                             {{ row.firstName }}
                         </td>
-                        <td style="width:14%; min-width:10rem;"><span class="p-column-title">{{ 'COMMON.FIELD_USERNAME' | translate }} </span>
+                        <td style="width:14%; min-width:10rem;"><span class="p-column-title">{{ 'COMMON.FIELD_LASTNAME' | translate }} </span>
                             {{row.lastName }}
                         </td>
                         <td style="width:14%; min-width:10rem;">
-                            <span class="p-column-title">{{ 'COMMON.FIELD_CREATED_AT' | translate }} </span>
+                            <span class="p-column-title">{{ 'EMPLOYEE.AWARDS' | translate }} </span>
                             {{row.dundieAwards }}
                         </td>
                         <td style="width:14%; min-width:10rem;">
-                            <span class="p-column-title">{{ 'COMMON.FIELD_UPDATED_AT' | translate }} </span>
+                            <span class="p-column-title">{{ 'EMPLOYEE.ORGANIZATION_ID' | translate }} </span>
+                            {{row.organizationId}}
+                        </td>
+                        <td style="width:14%; min-width:10rem;">
+                            <span class="p-column-title">{{ 'EMPLOYEE.ORGANIZATION_NAME' | translate }} </span>
                             {{row.organizationId}}
                         </td>
                         <td>

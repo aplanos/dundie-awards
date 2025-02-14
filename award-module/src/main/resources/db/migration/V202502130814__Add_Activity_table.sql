@@ -1,7 +1,10 @@
 DO $$
     BEGIN
+
+        CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
+
         CREATE TABLE activities (
-            id SERIAL PRIMARY KEY,
+            id UUID PRIMARY KEY,
             started_at TIMESTAMP,
             type VARCHAR(255) NOT NULL,
             status VARCHAR(255) NOT NULL,

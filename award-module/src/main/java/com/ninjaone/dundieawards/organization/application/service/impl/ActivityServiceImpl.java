@@ -4,6 +4,7 @@ import com.ninjaone.dundieawards.common.utils.MapperUtils;
 import com.ninjaone.dundieawards.organization.application.dto.ActivityModel;
 import com.ninjaone.dundieawards.organization.application.service.ActivityService;
 import com.ninjaone.dundieawards.organization.domain.entity.Activity;
+import com.ninjaone.dundieawards.organization.domain.enums.ActivityStatus;
 import com.ninjaone.dundieawards.organization.domain.specification.TenantSpecification;
 import com.ninjaone.dundieawards.organization.infraestructure.adapter.repository.ActivityRepository;
 import org.modelmapper.ModelMapper;
@@ -17,6 +18,7 @@ import org.springframework.stereotype.Service;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
+import java.util.UUID;
 
 @Service
 public class ActivityServiceImpl implements ActivityService {
@@ -59,16 +61,16 @@ public class ActivityServiceImpl implements ActivityService {
     }
 
     @Override
-    public ActivityModel save(ActivityModel model) {
+    public void save(ActivityModel model) {
         final var activity = activityRepository.save(
                 MapperUtils.mapTo(model, Activity.class)
         );
 
-        return MapperUtils.mapTo(activity, ActivityModel.class);
+        MapperUtils.mapTo(activity, ActivityModel.class);
     }
 
     @Override
-    public ActivityModel findById(long id) {
+    public ActivityModel findById(UUID id) {
 
         final var activity = activityRepository.findById(id).
                 orElseThrow(() -> new IllegalArgumentException("Activity not found"));
@@ -77,7 +79,12 @@ public class ActivityServiceImpl implements ActivityService {
     }
 
     @Override
-    public void delete(long id) {
+    public void updateActivityStatus(UUID id, ActivityStatus status) {
+        activityRepository.updateActivityStatus(id, status);
+    }
+
+    @Override
+    public void delete(UUID id) {
         activityRepository.deleteById(id);
     }
 }

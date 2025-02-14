@@ -1,11 +1,78 @@
 {
     "LOGIN": {
-        "USERNAME": "Usuario",
+        "WELCOME_MSG": "Inicia sesión en tu cuenta",
+        "USERNAME": "Nombre de usuario",
         "PASSWORD": "Contraseña",
-        "BUTTON_LOGIN": "Entrar",
-        "BUTTON_LOGOUT": "Cerrar Sesión"
+        "BUTTON_LOGIN": "Iniciar sesión",
+        "BUTTON_LOGOUT": "Cerrar sesión"
     },
     "ANALYTICS": {
-        "WELCOME_MSG": "Here is what’s happening with Orca today:"
+        "WELCOME_MSG": "Bienvenido",
+        "WELCOME_DETAIL_MSG": "Esto es lo que está sucediendo con Dunder Mifflin hoy:",
+        "CLEAR_FILTER": "Limpiar filtros"
+    },
+    "COMMON": {
+        "NEW": "Nuevo",
+        "BACK": "Atrás",
+        "UPDATE": "Actualizar",
+        "DELETE": "Eliminar",
+        "IMPORT": "Importar",
+        "EXPORT": "Exportar",
+        "FEATURES": "Características",
+        "SEARCH": "Buscar...",
+        "TABLE_PAGING": "Mostrando {first} a {last} de {totalRecords} entradas",
+        "FIELD_NAME": "Nombre",
+        "FIELD_VERSION": "Versión",
+        "FIELD_OWNER": "Propietario",
+        "FIELD_STATUS": "Estado",
+        "FIELD_CREATED_AT": "Creado en",
+        "FIELD_UPDATED_AT": "Actualizado en",
+        "FIELD_REQUIRED": "Campo obligatorio.",
+        "FIELD_USERNAME": "Nombre de usuario",
+        "FIELD_PASSWORD": "Contraseña",
+        "FIELD_PROFILE": "Perfil",
+        "FIELD_EMAIL": "Correo electrónico",
+        "FIELD_FIRSTNAME": "Primer nombre",
+        "FIELD_LASTNAME": "Apellido",
+        "FIELD_DESCRIPTION": "Descripción",
+        "FIELD_EXPIRED_AT": "Caduca en",
+        "BUTTON_CANCEL": "Cancelar",
+        "BUTTON_SAVE": "Guardar",
+        "BUTTON_CONFIRM": "Confirmar",
+        "CONFIRM_MESSAGE": "Confirmado",
+        "COPY_CLIPBOARD": "¡Copiado al portapapeles con éxito!",
+        "MANAGE": "Lista",
+        "TYPE": "Tipo",
+        "STATUS": "Status",
+        "FIELD_STARTED_AT": "Iniciado en"
+    },
+    "MENU": {
+        "FEATURES": "Características",
+        "DASHBOARD": "Tableros",
+        "ANALYTICS": "Análisis",
+        "EMPLOYEES": "Empleados",
+        "ACTIVITIES": "Actividades",
+        "CONFIGURATION": "Configuración",
+        "OPTIONS": "Opciones",
+        "LOGOUT": "Cerrar sesión"
+    },
+    "STATUS": {
+        "ACTIVE": "Activo",
+        "INACTIVE": "Inactivo",
+        "UNKNOWN": "Desconocido"
+    },
+    "CONFIRMATIONS": {
+        "HEADER": "¿Estás seguro?",
+        "MESSAGE": "Por favor, confirma para continuar."
+    },
+    "EMPLOYEE": {
+        "AWARDS": "Dundie Awards",
+        "ORGANIZATION_ID": "Organization Id",
+        "ORGANIZATION_NAME": "Organization Name"
+    },
+    "EMPLOYEE": {
+        "AWARDS": "Dundie Awards",
+        "ORGANIZATION_ID": "Id Organización",
+        "ORGANIZATION_NAME": "Nombre Organización"
     }
 }

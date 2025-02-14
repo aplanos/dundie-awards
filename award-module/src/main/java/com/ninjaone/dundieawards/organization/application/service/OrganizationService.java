@@ -10,4 +10,5 @@ public interface OrganizationService {
     void delete(OrganizationModel organization);
     PagedModel<OrganizationModel> findAll(int page, int pageSize);
     OrganizationModel findById(long id);
+    void giveAwards(long organizationId, long amount);
 }

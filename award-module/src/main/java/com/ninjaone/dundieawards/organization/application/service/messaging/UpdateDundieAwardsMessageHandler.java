@@ -1,7 +1,9 @@
 package com.ninjaone.dundieawards.organization.application.service.messaging;
 
 import com.ninjaone.dundieawards.organization.application.dto.EmployeeModel;
+import com.ninjaone.dundieawards.organization.application.service.ActivityService;
 import com.ninjaone.dundieawards.organization.application.service.EmployeeService;
+import com.ninjaone.dundieawards.organization.domain.enums.ActivityStatus;
 import com.ninjaone.dundieawards.organization.domain.event.DomainEvent;
 import com.ninjaone.dundieawards.organization.domain.event.DomainEventType;
 import com.ninjaone.dundieawards.organization.domain.event.increase_dundie_awards.IncreaseDundieAwardsEventV1;
@@ -22,9 +24,12 @@ public class UpdateDundieAwardsMessageHandler implements MessageHandler {
     private int pageSize;
 
     private final EmployeeService employeeService;
+    private final ActivityService activityService;
 
-    public UpdateDundieAwardsMessageHandler(EmployeeService employeeService) {
+    public UpdateDundieAwardsMessageHandler(EmployeeService employeeService,
+                                            ActivityService activityService) {
         this.employeeService = employeeService;
+        this.activityService = activityService;
     }
 
     @Override
@@ -32,11 +37,15 @@ public class UpdateDundieAwardsMessageHandler implements MessageHandler {
     public void handle(DomainEvent message) {
         log.info("Handling INCREASE_DUNDIE_AWARDS message: {}", message);
 
-        if (message instanceof IncreaseDundieAwardsEventV1) {
-            final var organizationIdStr = message.body().get("organizationId");
-            final var organizationId = Long.parseLong(organizationIdStr);
-            processEmployeesInBatch(organizationId);
+        final var activity = activityService.findById(message.id());
+
+        if (message instanceof IncreaseDundieAwardsEventV1 increaseDundieAwardsEventV1) {
+            activityService.save(activity.markAsRunning());
+            processEmployeesInBatch(increaseDundieAwardsEventV1.organizationId());
+            activityService.save(activity.updateStatus(ActivityStatus.SUCCEEDED));
         } else {
+
+            activityService.save(activity.updateStatus(ActivityStatus.FAILED));
             log.error("Update Dundie Awards Message version is not supported");
         }
     }

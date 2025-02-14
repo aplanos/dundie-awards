@@ -40,7 +40,11 @@
         "BUTTON_SAVE": "Save",
         "BUTTON_CONFIRM": "Confirm",
         "CONFIRM_MESSAGE": "Confirmed",
-        "COPY_CLIPBOARD": "Copied to clipboard successfully!"
+        "COPY_CLIPBOARD": "Copied to clipboard successfully!",
+        "MANAGE": "List",
+        "TYPE": "Type",
+        "STATUS": "Status",
+        "FIELD_STARTED_AT": "Started At"
     },
     "MENU": {
         "FEATURES": "Features",
@@ -60,5 +64,10 @@
     "CONFIRMATIONS": {
         "HEADER": "Are you sure?",
         "MESSAGE": "Please confirm to proceed."
+    },
+    "EMPLOYEE": {
+        "AWARDS": "Dundie Awards",
+        "ORGANIZATION_ID": "Organization Id",
+        "ORGANIZATION_NAME": "Organization Name"
     }
 }

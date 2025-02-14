@@ -1,14 +1,14 @@
 {
     "LOGIN": {
-        "WELCOME_MSG": "Entre na sua conta",
-        "USERNAME": "Usuário",
+        "WELCOME_MSG": "Faça login na sua conta",
+        "USERNAME": "Nome de usuário",
         "PASSWORD": "Senha",
         "BUTTON_LOGIN": "Entrar",
-        "BUTTON_LOGOUT": "Encerrar Sessão"
+        "BUTTON_LOGOUT": "Sair"
     },
     "ANALYTICS": {
         "WELCOME_MSG": "Bem-vindo",
-        "WELCOME_DETAIL_MSG": "Aqui está o que está acontecendo com o Orca hoje:",
+        "WELCOME_DETAIL_MSG": "Aqui está o que está acontecendo com a Dunder Mifflin hoje:",
         "CLEAR_FILTER": "Limpar Filtros"
     },
     "COMMON": {
@@ -18,98 +18,56 @@
         "DELETE": "Excluir",
         "IMPORT": "Importar",
         "EXPORT": "Exportar",
-        "FEATURES": "Recursos",
-        "SEARCH": "Buscar...",
+        "FEATURES": "Funcionalidades",
+        "SEARCH": "Pesquisar...",
         "TABLE_PAGING": "Exibindo {first} a {last} de {totalRecords} entradas",
         "FIELD_NAME": "Nome",
         "FIELD_VERSION": "Versão",
-        "FIELD_OWNER": "Propietário",
+        "FIELD_OWNER": "Proprietário",
         "FIELD_STATUS": "Status",
-        "FIELD_CREATED_AT": "Criado Em",
-        "FIELD_UPDATED_AT": "Atualizado Em",
-        "FIELD_REQUIRED": "Campo requerido.",
-        "FIELD_USERNAME": "Username",
-        "FIELD_PASSWORD": "Password",
+        "FIELD_CREATED_AT": "Criado em",
+        "FIELD_UPDATED_AT": "Atualizado em",
+        "FIELD_REQUIRED": "Campo obrigatório.",
+        "FIELD_USERNAME": "Nome de usuário",
+        "FIELD_PASSWORD": "Senha",
         "FIELD_PROFILE": "Perfil",
         "FIELD_EMAIL": "Email",
-        "FIELD_FIRSTNAME": "Nome",
+        "FIELD_FIRSTNAME": "Primeiro nome",
         "FIELD_LASTNAME": "Sobrenome",
-        "FIELD_EXECUTION_WINDOW": "Janela de Execução",
         "FIELD_DESCRIPTION": "Descrição",
-        "FIELD_EXPIRED_AT": "Expira Em",
+        "FIELD_EXPIRED_AT": "Expira em",
         "BUTTON_CANCEL": "Cancelar",
-        "BUTTON_SAVE": "Guardar",
+        "BUTTON_SAVE": "Salvar",
         "BUTTON_CONFIRM": "Confirmar",
         "CONFIRM_MESSAGE": "Confirmado",
-        "COPY_CLIPBOARD": "Copiado para a área de transferência com sucesso!"
-    },
-    "ACCOUNTS": {
-        "MANAGE": "Contas",
-        "DETAILS": "Detalhes da Conta",
-        "FIELD_DOMAIN": "Dominio",
-        "FIELD_NAME": "Nome da Conta",
-        "INTEGRATION": "Integração",
-        "TOKENS": "Tokens",
-        "TOKEN": "Token"
-    },
-    "INTEGRATION_AGENTS": {
-        "MANAGE": "Agentes de Integração",
-        "DETAILS": "Detalhes do Agente de Integração"
-    },
-    "PROFILES": {
-        "MANAGE": "Perfis",
-        "DETAILS": "Detalhes do Perfil"
-    },
-    "USERS": {
-        "MANAGE": "Usuários",
-        "DETAILS": "Detalhes do Usuário"
+        "COPY_CLIPBOARD": "Copiado para a área de transferência com sucesso!",
+        "MANAGE": "Lista",
+        "TYPE": "Tipo",
+        "STATUS": "Status",
+        "FIELD_STARTED_AT": "Iniciado en"
     },
     "MENU": {
-        "DASHBOARD": "Paineis",
-        "ANALYTICS": "Analítico",
-        "ACCOUNTS": "Contas",
-        "MANAGE": "Gestão",
+        "FEATURES": "Funcionalidades",
+        "DASHBOARD": "Painéis",
+        "ANALYTICS": "Análises",
+        "EMPLOYEES": "Funcionários",
+        "ACTIVITIES": "Atividades",
         "CONFIGURATION": "Configuração",
-        "PROFILE": "Perfis",
-        "USERS": "Usuários",
-        "CUSTOMERS": "Clientes",
         "OPTIONS": "Opções",
-        "LOGOUT": "Encerrar Sessão",
-        "INTEGRATION": "Integrações",
-        "AGENTS": "Agentes",
-        "CRM": "CRM"
-    },
-    "FUNCTIONS": {
-        "DASHBOARD": "Paineis",
-        "ACCOUNT": "Conta",
-        "SYSTEM": "Sistema",
-        "USER": "Usuário",
-        "CUSTOMER": "Cliente",
-        "PROFILE": "Perfis",
-        "LIST": "Visualizar Listas",
-        "CREATE": "Criar",
-        "UPDATE": "Atualizar",
-        "DASHBOARD_ANALYTICS": "Analítico",
-        "INTEGRATIONS": "Integrações",
-        "INTEGRATION_AGENT_MANAGE": "Agentes de Integração"
+        "LOGOUT": "Sair"
     },
     "STATUS": {
         "ACTIVE": "Ativo",
         "INACTIVE": "Inativo",
         "UNKNOWN": "Desconhecido"
     },
-    "ACCOUNT_PARAMETER": {
-        "TRAY_PARAMETERS": "Integração - Tray",
-        "TRAY_CONSUMER_KEY": "Chave Consumidor",
-        "TRAY_CONSUMER_SECRET": "Segredo Consumidor",
-        "TRAY_CODE": "Código",
-        "TRAY_STORE_URL": "URL da Loja",
-        "SAFER_PARAMETERS": "Integração - Safer",
-        "SAFER_STOCK_BRANCH_CODE": "Código Filial Estoque",
-        "SAFER_PRICE_BRANCH_CODE": "Código Filial Preço"
-    },
     "CONFIRMATIONS": {
-        "HEADER": "Tem certeza?",
-        "MESSAGE": "Por favor, confirme para proseguir."
+        "HEADER": "Você tem certeza?",
+        "MESSAGE": "Por favor, confirme para continuar."
+    },
+    "EMPLOYEE": {
+        "AWARDS": "Dundie Awards",
+        "ORGANIZATION_ID": "Id Organização",
+        "ORGANIZATION_NAME": "Nome Organização"
     }
 }
