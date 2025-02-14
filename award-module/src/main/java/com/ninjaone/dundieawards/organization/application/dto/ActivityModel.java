@@ -60,7 +60,7 @@ public class ActivityModel {
      *
      * @return The updated ActivityModel instance.
      */
-    public ActivityModel updateStatus(ActivityStatus status) {
+    public ActivityModel withStatus(ActivityStatus status) {
         if (this.status != status) {
             this.status = status;
             this.updatedAt = LocalDateTime.now();

@@ -1,9 +1,7 @@
 package com.ninjaone.dundieawards.organization.application.service.messaging;
 
 import com.ninjaone.dundieawards.organization.application.dto.EmployeeModel;
-import com.ninjaone.dundieawards.organization.application.service.ActivityService;
 import com.ninjaone.dundieawards.organization.application.service.EmployeeService;
-import com.ninjaone.dundieawards.organization.domain.enums.ActivityStatus;
 import com.ninjaone.dundieawards.organization.domain.event.DomainEvent;
 import com.ninjaone.dundieawards.organization.domain.event.DomainEventType;
 import com.ninjaone.dundieawards.organization.domain.event.increase_dundie_awards.IncreaseDundieAwardsEventV1;
@@ -24,12 +22,9 @@ public class UpdateDundieAwardsMessageHandler implements MessageHandler {
     private int pageSize;
 
     private final EmployeeService employeeService;
-    private final ActivityService activityService;
 
-    public UpdateDundieAwardsMessageHandler(EmployeeService employeeService,
-                                            ActivityService activityService) {
+    public UpdateDundieAwardsMessageHandler(EmployeeService employeeService) {
         this.employeeService = employeeService;
-        this.activityService = activityService;
     }
 
     @Override
@@ -37,21 +32,15 @@ public class UpdateDundieAwardsMessageHandler implements MessageHandler {
     public void handle(DomainEvent message) {
         log.info("Handling INCREASE_DUNDIE_AWARDS message: {}", message);
 
-        final var activity = activityService.findById(message.id());
-
-        if (message instanceof IncreaseDundieAwardsEventV1 increaseDundieAwardsEventV1) {
-            activityService.save(activity.markAsRunning());
-            processEmployeesInBatch(increaseDundieAwardsEventV1.organizationId());
-            activityService.save(activity.updateStatus(ActivityStatus.SUCCEEDED));
+        if (message instanceof IncreaseDundieAwardsEventV1 eventV1) {
+            processEmployeesInBatch(eventV1.organizationId(), eventV1.amount());
         } else {
-
-            activityService.save(activity.updateStatus(ActivityStatus.FAILED));
             log.error("Update Dundie Awards Message version is not supported");
         }
     }
 
     @Transactional
-    public void processEmployeesInBatch(long organizationId) {
+    public void processEmployeesInBatch(long organizationId, long amount) {
         int pageNumber = 0;
         Page<EmployeeModel> page;
 
@@ -64,7 +53,7 @@ public class UpdateDundieAwardsMessageHandler implements MessageHandler {
             }
 
             log.info("Processing page {} with {} employees for organizationId {}", pageNumber, pageSize, organizationId);
-            processEmployeeBatch(page.getContent());
+            processEmployeeBatch(page.getContent(), amount);
             log.info("Successfully updated {} employees awards for organizationId {}", pageSize, organizationId);
 
             pageNumber++;
@@ -72,13 +61,13 @@ public class UpdateDundieAwardsMessageHandler implements MessageHandler {
     }
 
     @Transactional
-    public void processEmployeeBatch(List<EmployeeModel> employees) {
+    public void processEmployeeBatch(List<EmployeeModel> employees, long amount) {
 
         var employeesIds = employees.stream()
                 .map(EmployeeModel::getId)
                 .collect(Collectors.toSet());
 
-        employeeService.updateEmployeesAwards(employeesIds, 1);
+        employeeService.updateEmployeesAwards(employeesIds, amount);
     }
 
     @Override
