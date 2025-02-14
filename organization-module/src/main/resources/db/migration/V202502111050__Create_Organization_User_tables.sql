@@ -11,6 +11,7 @@ DO $$
            last_name VARCHAR(255) NOT NULL,
            dundie_awards BIGINT DEFAULT 0,
            organization_id BIGINT NOT NULL,
+           deleted boolean NOT NULL DEFAULT false,
            CONSTRAINT fk_organization FOREIGN KEY (organization_id) REFERENCES organizations(id)
         );
 END $$;

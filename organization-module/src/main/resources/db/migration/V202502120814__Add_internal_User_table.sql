@@ -11,7 +11,7 @@ DO $$
              created_by INTEGER,
              updated_at TIMESTAMPTZ DEFAULT NOW() NOT NULL,
              updated_by INTEGER,
-             deleted_at TIMESTAMPTZ,
+             deleted boolean NOT NULL DEFAULT FALSE,
              CONSTRAINT fk_created_by FOREIGN KEY (created_by) REFERENCES internal_user(id),
              CONSTRAINT fk_updated_by FOREIGN KEY (updated_by) REFERENCES internal_user(id)
         );

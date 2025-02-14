@@ -27,10 +27,14 @@ public class Employee {
     @Column(name = "organization_id")
     private long organizationId;
 
+    @Column(name = "organization_id")
+    private boolean deleted;
+
     public Employee(String firstName, String lastName, long organizationId) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.organizationId = organizationId;
         this.dundieAwards = 0L;
+        this.deleted = false;
     }
 }

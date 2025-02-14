@@ -1,11 +1,11 @@
 package com.ninjaone.dundieawards.organization.application.service.impl;
 
-import com.ninjaone.dundieawards.common.infraestructure.utils.MapperUtils;
+import com.ninjaone.dundieawards.common.infrastructure.utils.MapperUtils;
 import com.ninjaone.dundieawards.messaging.application.messaging.publishers.OrganizationEventPublisher;
 import com.ninjaone.dundieawards.messaging.domain.event.increase_dundie_awards.IncreaseDundieAwardsEventV1;
 import com.ninjaone.dundieawards.organization.application.dto.OrganizationModel;
 import com.ninjaone.dundieawards.organization.application.service.OrganizationService;
-import com.ninjaone.dundieawards.organization.infraestructure.repository.OrganizationRepository;
+import com.ninjaone.dundieawards.organization.infrastructure.repository.OrganizationRepository;
 import jakarta.persistence.EntityNotFoundException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.web.PagedModel;

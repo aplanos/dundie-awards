@@ -2,9 +2,9 @@ package com.ninjaone.dundieawards.organization.application.scheduler;
 
 import com.ninjaone.dundieawards.organization.domain.entity.QuartzJob;
 import com.ninjaone.dundieawards.organization.domain.enums.JobStatus;
-import com.ninjaone.dundieawards.organization.infraestructure.messaging.broker.config.MessageBrokerProperties;
-import com.ninjaone.dundieawards.organization.infraestructure.repository.QuartzJobRepository;
-import com.ninjaone.dundieawards.organization.infraestructure.quartz.MessageBrokerSubscriptionJob;
+import com.ninjaone.dundieawards.organization.infrastructure.messaging.broker.config.MessageBrokerProperties;
+import com.ninjaone.dundieawards.organization.infrastructure.repository.QuartzJobRepository;
+import com.ninjaone.dundieawards.organization.infrastructure.quartz.MessageBrokerSubscriptionJob;
 import jakarta.annotation.PostConstruct;
 import org.quartz.*;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;

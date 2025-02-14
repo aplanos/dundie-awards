@@ -5,14 +5,14 @@ DO $$
 
         CREATE TABLE activities (
             id UUID PRIMARY KEY,
-            started_at TIMESTAMP,
+            started_at TIMESTAMPTZ,
             type VARCHAR(255) NOT NULL,
             status VARCHAR(255) NOT NULL,
             context JSONB,
             log TEXT,
             organization_id BIGINT NOT NULL,
             created_at TIMESTAMPTZ DEFAULT NOW() NOT NULL,
-            updated_at TIMESTAMPTZ DEFAULT NOW(),
+            updated_at TIMESTAMPTZ DEFAULT NOW() NOT NULL,
             CONSTRAINT fk_organization FOREIGN KEY (organization_id) REFERENCES organizations(id)
         );
     END $$;

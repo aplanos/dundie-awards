@@ -4,7 +4,9 @@ import com.ninjaone.dundieawards.activity.domain.ActivityStatus;
 import com.ninjaone.dundieawards.activity.domain.ActivityType;
 import lombok.*;
 
-import java.time.LocalDateTime;
+import io.swagger.v3.oas.annotations.media.Schema;
+
+import java.time.Instant;
 import java.util.Map;
 import java.util.UUID;
 
@@ -12,16 +14,36 @@ import java.util.UUID;
 @Getter @Setter
 @NoArgsConstructor
 @AllArgsConstructor
+
+@Schema(name = "ActivityModel", description = "Represents an activity within the system")
 public class ActivityModel {
+
+    @Schema(description = "Unique identifier of the activity", example = "550e8400-e29b-41d4-a716-446655440000")
     private UUID id;
+
+    @Schema(description = "ID of the organization associated with the activity", example = "123456")
     private long organizationId;
-    private LocalDateTime startedAt;
+
+    @Schema(description = "Timestamp when the activity started", example = "2025-02-14T10:00:00")
+    private Instant startedAt;
+
+    @Schema(description = "Type of the activity", example = "USER_LOGIN")
     private ActivityType type;
+
+    @Schema(description = "Current status of the activity", example = "IN_PROGRESS")
     private ActivityStatus status;
+
+    @Schema(description = "Additional context information in key-value pairs", example = "{\"ip\": \"192.168.1.1\", \"device\": \"mobile\"}")
     private Map<String, String> context;
+
+    @Schema(description = "Log message associated with the activity", example = "User logged in successfully")
     private String log;
-    private LocalDateTime createdAt;
-    private LocalDateTime updatedAt;
+
+    @Schema(description = "Timestamp when the activity was created", example = "2025-02-14T09:55:00")
+    private Instant createdAt;
+
+    @Schema(description = "Timestamp when the activity was last updated", example = "2025-02-14T09:59:00")
+    private Instant updatedAt;
 
     /**
      * Factory method to create a pending activity for giving an organization Dundie Awards.
@@ -38,8 +60,8 @@ public class ActivityModel {
                 .status(ActivityStatus.SUCCEEDED)
                 .context(context)
                 .organizationId(organizationId)
-                .createdAt(LocalDateTime.now())
-                .updatedAt(LocalDateTime.now())
+                .createdAt(Instant.now())
+                .updatedAt(Instant.now())
                 .build();
     }
 
@@ -51,8 +73,8 @@ public class ActivityModel {
     public ActivityModel markAsRunning() {
         if (status != ActivityStatus.RUNNING) {
             this.status = ActivityStatus.RUNNING;
-            this.updatedAt = LocalDateTime.now();
-            this.startedAt = LocalDateTime.now();
+            this.updatedAt = Instant.now();
+            this.startedAt = Instant.now();
         }
         return this;
     }
@@ -65,7 +87,7 @@ public class ActivityModel {
     public ActivityModel withStatus(ActivityStatus status) {
         if (this.status != status) {
             this.status = status;
-            this.updatedAt = LocalDateTime.now();
+            this.updatedAt = Instant.now();
         }
         return this;
     }

@@ -4,6 +4,7 @@ plugins {
 
 dependencies {
 	implementation project(':common-module')
+	implementation project(':auth-module')
 	implementation project(':messaging-module')
 
 	implementation "org.springframework.boot:spring-boot-starter:${versions.spring_boot}"
@@ -14,6 +15,8 @@ dependencies {
 	implementation "org.springframework.boot:spring-boot-starter-security:${versions.spring_boot}"
 	implementation "org.springframework.boot:spring-boot-starter-quartz:${versions.spring_boot}"
 	implementation "org.springframework.boot:spring-boot-starter-data-redis:${versions.spring_boot}"
+	implementation "org.springframework.boot:spring-boot-starter-validation:${versions.spring_boot}"
+	implementation "org.springdoc:springdoc-openapi-starter-webmvc-ui:${versions.spring_doc_openapi}"
 
 	implementation "io.jsonwebtoken:jjwt-api:${versions.json_web_token}"
 	implementation "io.jsonwebtoken:jjwt-impl:${versions.json_web_token}"

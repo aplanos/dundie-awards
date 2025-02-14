@@ -1,12 +1,12 @@
 package com.ninjaone.dundieawards.organization.application.service.impl;
 
-import com.ninjaone.dundieawards.common.infraestructure.utils.MapperUtils;
+import com.ninjaone.dundieawards.common.infrastructure.utils.MapperUtils;
 import com.ninjaone.dundieawards.common.domain.specification.TenantSpecification;
 import com.ninjaone.dundieawards.organization.application.dto.AwardSummaryStats;
 import com.ninjaone.dundieawards.organization.application.dto.EmployeeModel;
 import com.ninjaone.dundieawards.organization.application.service.EmployeeService;
 import com.ninjaone.dundieawards.organization.domain.entity.Employee;
-import com.ninjaone.dundieawards.organization.infraestructure.repository.EmployeeRepository;
+import com.ninjaone.dundieawards.organization.infrastructure.repository.EmployeeRepository;
 import jakarta.persistence.EntityNotFoundException;
 import org.modelmapper.ModelMapper;
 import org.springframework.cache.annotation.CacheEvict;
@@ -78,8 +78,16 @@ public class EmployeeServiceImpl implements EmployeeService {
     }
 
     @Override
+    @CacheEvict(value = "awards-summary-stats", allEntries = true)
     public void delete(long id) {
+        final var employee = employeeRepository.findById(id)
+                .orElseThrow(() -> new EntityNotFoundException(
+                        String.format("Employee with id %s not found", id)
+                ));
 
+        employee.setDeleted(true);
+
+        employeeRepository.save(employee);
     }
 
     @Override

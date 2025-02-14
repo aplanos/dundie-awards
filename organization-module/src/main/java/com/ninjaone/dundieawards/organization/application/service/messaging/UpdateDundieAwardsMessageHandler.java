@@ -9,6 +9,7 @@ import com.ninjaone.dundieawards.messaging.domain.event.activity_create.Activity
 import com.ninjaone.dundieawards.messaging.domain.event.increase_dundie_awards.IncreaseDundieAwardsEventV1;
 import com.ninjaone.dundieawards.organization.application.dto.EmployeeModel;
 import com.ninjaone.dundieawards.organization.application.service.EmployeeService;
+import com.ninjaone.dundieawards.organization.infrastructure.messaging.broker.config.MessageBrokerProperties;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.domain.Page;
@@ -22,16 +23,16 @@ import java.util.stream.Collectors;
 @Service
 public class UpdateDundieAwardsMessageHandler implements MessageHandler {
 
-    @Value("${employee.pageSize:1}")
-    private int pageSize;
-
     private final EmployeeService employeeService;
     private final ActivityEventPublisher activityEventPublisher;
+    private final MessageBrokerProperties properties;
 
     public UpdateDundieAwardsMessageHandler(EmployeeService employeeService,
-                                            ActivityEventPublisher activityEventPublisher) {
+                                            ActivityEventPublisher activityEventPublisher,
+                                            MessageBrokerProperties properties) {
         this.employeeService = employeeService;
         this.activityEventPublisher = activityEventPublisher;
+        this.properties = properties;
     }
 
     @Override
@@ -57,16 +58,16 @@ public class UpdateDundieAwardsMessageHandler implements MessageHandler {
         Page<EmployeeModel> page;
 
         do {
-            page = employeeService.findAllByOrganizationId(pageNumber, pageSize, organizationId);
+            page = employeeService.findAllByOrganizationId(pageNumber, properties.getHandlersBatchSize(), organizationId);
 
             if (page.getContent().isEmpty()) {
                 log.warn("No employees found on page {} for organizationId {}", pageNumber, organizationId);
                 break;
             }
 
-            log.info("Processing page {} with {} employees for organizationId {}", pageNumber, pageSize, organizationId);
+            log.info("Processing page {} with {} employees for organizationId {}", pageNumber, properties.getHandlersBatchSize(), organizationId);
             processEmployeeBatch(page.getContent(), amount);
-            log.info("Successfully updated {} employees awards for organizationId {}", pageSize, organizationId);
+            log.info("Successfully updated {} employees awards for organizationId {}", properties.getHandlersBatchSize(), organizationId);
 
             pageNumber++;
         } while (page.hasNext());
