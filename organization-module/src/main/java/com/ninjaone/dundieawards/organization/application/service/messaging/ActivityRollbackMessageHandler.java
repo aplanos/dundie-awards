@@ -4,8 +4,8 @@ import com.ninjaone.dundieawards.messaging.application.messaging.MessageHandler;
 import com.ninjaone.dundieawards.messaging.application.messaging.publishers.ActivityEventPublisher;
 import com.ninjaone.dundieawards.messaging.domain.event.DomainEvent;
 import com.ninjaone.dundieawards.messaging.domain.event.DomainEventType;
-import com.ninjaone.dundieawards.messaging.domain.event.activity_create.ActivityCreateEvent;
 import com.ninjaone.dundieawards.messaging.domain.event.activity_create.ActivityCreateEventV1;
+import com.ninjaone.dundieawards.messaging.domain.event.activity_rollback.ActivityRollBackEventV1;
 import com.ninjaone.dundieawards.messaging.domain.event.increase_dundie_awards.IncreaseDundieAwardsEventV1;
 import com.ninjaone.dundieawards.organization.application.dto.EmployeeModel;
 import com.ninjaone.dundieawards.organization.application.service.EmployeeService;
@@ -20,32 +20,24 @@ import java.util.stream.Collectors;
 
 @Slf4j
 @Service
-public class UpdateDundieAwardsMessageHandler implements MessageHandler {
+public class ActivityRollbackMessageHandler implements MessageHandler {
 
     @Value("${employee.pageSize:1}")
     private int pageSize;
 
     private final EmployeeService employeeService;
-    private final ActivityEventPublisher activityEventPublisher;
 
-    public UpdateDundieAwardsMessageHandler(EmployeeService employeeService,
-                                            ActivityEventPublisher activityEventPublisher) {
+    public ActivityRollbackMessageHandler(EmployeeService employeeService) {
         this.employeeService = employeeService;
-        this.activityEventPublisher = activityEventPublisher;
     }
 
     @Override
     @Transactional
     public void handle(DomainEvent message) {
-        log.info("Handling INCREASE_DUNDIE_AWARDS message: {}", message);
+        log.info("Handling ACTIVITY_ROLLBACK message: {}", message);
 
-        if (message instanceof IncreaseDundieAwardsEventV1 eventV1) {
+        if (message instanceof ActivityRollBackEventV1 eventV1) {
             processEmployeesInBatch(eventV1.organizationId(), eventV1.amount());
-            activityEventPublisher.publishActivityCreateEvent(
-                    ActivityCreateEventV1.create(
-                            "awards-module", eventV1.organizationId(), eventV1.amount()
-                    )
-            );
         } else {
             log.error("Update Dundie Awards Message version is not supported");
         }
@@ -79,11 +71,11 @@ public class UpdateDundieAwardsMessageHandler implements MessageHandler {
                 .map(EmployeeModel::getId)
                 .collect(Collectors.toSet());
 
-        employeeService.updateEmployeesAwards(employeesIds, amount);
+        employeeService.updateEmployeesAwards(employeesIds, -amount);
     }
 
     @Override
     public DomainEventType getSupportedType() {
-        return DomainEventType.INCREASE_DUNDIE_AWARDS;
+        return DomainEventType.ACTIVITY_ROLLBACK;
     }
 }

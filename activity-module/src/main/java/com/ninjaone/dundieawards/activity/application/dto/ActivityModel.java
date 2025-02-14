@@ -26,18 +26,20 @@ public class ActivityModel {
     /**
      * Factory method to create a pending activity for giving an organization Dundie Awards.
      *
-     * @param id        The UUID of the activity.
+     * @param eventId        The UUID of the source event.
      * @param organizationId The ID of the organization.
      * @param context   The context of the activity.
      * @return A newly created ActivityModel instance.
      */
-    public static ActivityModel pendingGiveOrganizationDundieAwards(UUID id, Long organizationId, Map<String, String> context) {
+    public static ActivityModel createGiveOrganizationDundieAwards(UUID eventId, Long organizationId, Map<String, String> context) {
         return ActivityModel.builder()
-                .id(id)
+                .id(UUID.randomUUID())
                 .type(ActivityType.GIVE_ORGANIZATION_DUNDIE_AWARDS)
-                .status(ActivityStatus.PENDING)
+                .status(ActivityStatus.SUCCEEDED)
                 .context(context)
                 .organizationId(organizationId)
+                .createdAt(LocalDateTime.now())
+                .updatedAt(LocalDateTime.now())
                 .build();
     }
 

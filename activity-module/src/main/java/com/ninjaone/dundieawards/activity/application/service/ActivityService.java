@@ -10,7 +10,7 @@ public interface ActivityService {
 
     Page<ActivityModel> findAllByOrganizationId(int page, int pageSize, long organizationId);
     Page<ActivityModel> findAll(int page, int pageSize);
-    void save(ActivityModel employee);
+    void save(ActivityModel model);
     ActivityModel findById(UUID id);
     void updateActivityStatus(UUID id, ActivityStatus status);
     void delete(UUID id);

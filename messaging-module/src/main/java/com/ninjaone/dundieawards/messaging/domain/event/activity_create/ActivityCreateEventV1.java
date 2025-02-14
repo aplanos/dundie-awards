@@ -6,9 +6,10 @@ import java.util.UUID;
 public record ActivityCreateEventV1(UUID id,
                                     String sender,
                                     Instant occurredOn,
-                                    Long organizationId) implements ActivityCreateEvent {
+                                    Long organizationId,
+                                    Long amount) implements ActivityCreateEvent {
 
-    public static ActivityCreateEventV1 create(String sender, Long organizationId) {
-        return new ActivityCreateEventV1(UUID.randomUUID(), sender, Instant.now(), organizationId);
+    public static ActivityCreateEventV1 create(String sender, Long organizationId, Long amount) {
+        return new ActivityCreateEventV1(UUID.randomUUID(), sender, Instant.now(), organizationId, amount);
     }
 }
