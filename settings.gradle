@@ -1,5 +1,6 @@
 rootProject.name = 'dundie-awards-project'
 
 include 'common-module'
-include 'award-module'
+include 'organization-module'
+include 'activity-module'
 include 'messaging-module'
