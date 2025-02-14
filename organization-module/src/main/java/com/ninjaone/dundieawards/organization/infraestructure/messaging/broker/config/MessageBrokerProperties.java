@@ -9,5 +9,5 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 @ConfigurationProperties(prefix = "messaging.messagebroker")
 public class MessageBrokerProperties {
-    private long pollingInterval;
+    private String pollingInterval;
 }

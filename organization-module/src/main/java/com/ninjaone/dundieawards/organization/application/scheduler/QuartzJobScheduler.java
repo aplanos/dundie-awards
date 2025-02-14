@@ -2,6 +2,7 @@ package com.ninjaone.dundieawards.organization.application.scheduler;
 
 import com.ninjaone.dundieawards.organization.domain.entity.QuartzJob;
 import com.ninjaone.dundieawards.organization.domain.enums.JobStatus;
+import com.ninjaone.dundieawards.organization.infraestructure.messaging.broker.config.MessageBrokerProperties;
 import com.ninjaone.dundieawards.organization.infraestructure.repository.QuartzJobRepository;
 import com.ninjaone.dundieawards.organization.infraestructure.quartz.MessageBrokerSubscriptionJob;
 import jakarta.annotation.PostConstruct;
@@ -15,18 +16,20 @@ public class QuartzJobScheduler {
 
     private final Scheduler scheduler;
     private final QuartzJobRepository jobRepository;
-
+    private final MessageBrokerProperties messageBrokerProperties;
 
     public QuartzJobScheduler(Scheduler scheduler,
-                              QuartzJobRepository jobRepository) {
+                              QuartzJobRepository jobRepository,
+                              MessageBrokerProperties messageBrokerProperties) {
         this.scheduler = scheduler;
         this.jobRepository = jobRepository;
+        this.messageBrokerProperties = messageBrokerProperties;
     }
 
     @PostConstruct
     public void init() throws SchedulerException {
         scheduler.start();
-        scheduleJob("MESSAGE_BROKER_LISTENER", "0/5 * * * * ?");
+        scheduleJob("MESSAGE_BROKER_LISTENER", messageBrokerProperties.getPollingInterval());
     }
 
     public void scheduleJob(String jobName, String cronExpression) throws SchedulerException {
@@ -47,6 +50,7 @@ public class QuartzJobScheduler {
                 .orElse(new QuartzJob(jobName, cronExpression));
 
         job.setJobStatus(JobStatus.RUNNING);
+        job.setCronExpression(cronExpression);
 
         jobRepository.save(job);
     }

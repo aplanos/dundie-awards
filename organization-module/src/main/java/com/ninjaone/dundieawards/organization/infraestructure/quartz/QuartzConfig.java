@@ -1,6 +1,7 @@
 package com.ninjaone.dundieawards.organization.infraestructure.quartz;
 
-import org.quartz.Scheduler;
+import com.ninjaone.dundieawards.organization.infraestructure.messaging.broker.config.MessageBrokerProperties;
+import org.quartz.*;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

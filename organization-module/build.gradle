@@ -6,35 +6,35 @@ dependencies {
 	implementation project(':common-module')
 	implementation project(':messaging-module')
 
-	implementation 'org.springframework.boot:spring-boot-starter'
-	implementation 'org.springframework.boot:spring-boot-starter-web'
-	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
-	implementation 'org.springframework.boot:spring-boot-starter-cache'
-	implementation 'org.springframework.boot:spring-boot-starter-amqp'
-	implementation 'org.springframework.boot:spring-boot-starter-security'
-	implementation 'org.springframework.boot:spring-boot-starter-quartz'
-	implementation 'org.springframework.boot:spring-boot-starter-data-redis'
+	implementation "org.springframework.boot:spring-boot-starter:${versions.spring_boot}"
+	implementation "org.springframework.boot:spring-boot-starter-web:${versions.spring_boot}"
+	implementation "org.springframework.boot:spring-boot-starter-data-jpa:${versions.spring_boot}"
+	implementation "org.springframework.boot:spring-boot-starter-cache:${versions.spring_boot}"
+	implementation "org.springframework.boot:spring-boot-starter-amqp:${versions.spring_boot}"
+	implementation "org.springframework.boot:spring-boot-starter-security:${versions.spring_boot}"
+	implementation "org.springframework.boot:spring-boot-starter-quartz:${versions.spring_boot}"
+	implementation "org.springframework.boot:spring-boot-starter-data-redis:${versions.spring_boot}"
 
-	implementation "io.jsonwebtoken:jjwt-api:${versions.jsonwebtoken}"
-	implementation "io.jsonwebtoken:jjwt-impl:${versions.jsonwebtoken}"
-	implementation "io.jsonwebtoken:jjwt-jackson:${versions.jsonwebtoken}"
+	implementation "io.jsonwebtoken:jjwt-api:${versions.json_web_token}"
+	implementation "io.jsonwebtoken:jjwt-impl:${versions.json_web_token}"
+	implementation "io.jsonwebtoken:jjwt-jackson:${versions.json_web_token}"
 
-	implementation 'io.hypersistence:hypersistence-utils-hibernate-63:3.9.0'
+	implementation "io.hypersistence:hypersistence-utils-hibernate-63:${versions.hypersistence_utils_hibernate}"
 
-	implementation 'org.modelmapper:modelmapper:3.1.1'
+	implementation "org.modelmapper:modelmapper:${versions.model_mapper}"
 
-	implementation 'org.flywaydb:flyway-core'
-	implementation 'org.flywaydb:flyway-database-postgresql'
+	implementation "org.flywaydb:flyway-core:${versions.flyway}"
+	implementation "org.flywaydb:flyway-database-postgresql:${versions.flyway}"
 
-	implementation 'org.apache.commons:commons-lang3:3.0'
+	implementation "org.apache.commons:commons-lang3:${versions.apache_commons_lang3}"
 
-	implementation ('org.hibernate.orm:hibernate-community-dialects')
-	runtimeOnly 'org.postgresql:postgresql'
+	implementation "org.hibernate.orm:hibernate-community-dialects:${versions.hibernate_community_dialects}"
+	runtimeOnly "org.postgresql:postgresql:${versions.postgresql}"
+	
+	implementation "org.projectlombok:lombok:${versions.lombok}"
+	developmentOnly "org.springframework.boot:spring-boot-devtools:${versions.spring_boot}"
+	developmentOnly "org.springframework.boot:spring-boot-docker-compose:${versions.spring_boot}"
 
-	implementation 'org.projectlombok:lombok:1.18.24'
-	developmentOnly 'org.springframework.boot:spring-boot-devtools'
-	developmentOnly 'org.springframework.boot:spring-boot-docker-compose'
-
-	annotationProcessor 'org.projectlombok:lombok:1.18.24'
-	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	annotationProcessor "org.projectlombok:lombok:${versions.lombok}"
+	testImplementation "org.springframework.boot:spring-boot-starter-test:${versions.spring_boot}"
 }

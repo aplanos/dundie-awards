@@ -16,7 +16,16 @@ subprojects {
 
 	ext {
 		versions = [
-				jsonwebtoken: '0.11.5'
+				spring_boot: '3.4.2',
+				json_web_token: '0.11.5',
+				model_mapper: '3.1.1',
+				hypersistence_utils_hibernate: '3.9.0',
+				flyway: '10.20.1',
+				apache_commons_lang3: '3.0',
+				hibernate_community_dialects: '6.6.5.Final',
+				postgresql: '42.7.5',
+				lombok: '1.18.24',
+				jackson: '2.15.2',
 		]
 	}
 
