@@ -100,6 +100,9 @@ Ensure you have the following installed:
 
 ## Queues and Dead Letter Queue (DLQ) Definitions
 
+All the following queues can be accessed at the rabbitMq Console portal using the url: http://localhost:15672/#/queues 
+Login using the credentials guest/guest
+
 ### activity-create-queue
 - Handles messages related to the creation of activities.
 - Ensures that activity-related events are processed asynchronously and reliably.
