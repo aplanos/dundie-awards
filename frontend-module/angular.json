@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "syflow-orca": {
+    "dundie-awards": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -76,19 +76,19 @@
           "builder": "ngx-build-plus:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "syflow-orca:build:production"
+              "buildTarget": "dundie-awards:build:production"
             },
             "development": {
-              "buildTarget": "syflow-orca:build:development"
+              "buildTarget": "dundie-awards:build:development"
             }
           },
           "defaultConfiguration": "development",
-          "options": { "buildTarget": "syflow-orca:build" }
+          "options": { "buildTarget": "dundie-awards:build" }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "buildTarget": "syflow-orca:build"
+            "buildTarget": "dundie-awards:build"
           }
         },
         "test": {

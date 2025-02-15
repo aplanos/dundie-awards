@@ -9,6 +9,7 @@ import com.ninjaone.dundieawards.organization.application.dto.AwardSummaryStats;
 import com.ninjaone.dundieawards.organization.application.dto.EmployeeModel;
 import com.ninjaone.dundieawards.organization.domain.entity.Employee;
 import com.ninjaone.dundieawards.organization.infrastructure.repository.EmployeeRepository;
+import com.ninjaone.dundieawards.organization.infrastructure.repository.projection.EmployeeListItemProjection;
 import jakarta.persistence.EntityNotFoundException;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -20,7 +21,6 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.jpa.domain.Specification;
-
 
 @ExtendWith(MockitoExtension.class)
 class EmployeeServiceImplTest {
@@ -42,13 +42,13 @@ class EmployeeServiceImplTest {
         long organizationId = 1L;
 
         Page<Employee> employeePage = new PageImpl<>(Collections.emptyList());
-        when(employeeRepository.findAll(any(Specification.class), any(PageRequest.class)))
+        when(employeeRepository.findAllWithOrganization(any(Specification.class), any(PageRequest.class)))
                 .thenReturn(employeePage);
 
         Page<EmployeeModel> result = employeeService.findAllByOrganizationId(page, pageSize, organizationId);
 
         assertNotNull(result);
-        verify(employeeRepository).findAll(any(Specification.class), any(PageRequest.class));
+        verify(employeeRepository).findAllWithOrganization(any(Specification.class), any(PageRequest.class));
     }
 
     // Test findAll without specification
@@ -57,14 +57,14 @@ class EmployeeServiceImplTest {
         int page = 0;
         int pageSize = 10;
 
-        Page<Employee> employeePage = new PageImpl<>(Collections.emptyList());
-        when(employeeRepository.findAll(any(PageRequest.class)))
+        Page<EmployeeListItemProjection> employeePage = new PageImpl<>(Collections.emptyList());
+        when(employeeRepository.findAllWithOrganization(any(PageRequest.class)))
                 .thenReturn(employeePage);
 
         Page<EmployeeModel> result = employeeService.findAll(page, pageSize);
 
         assertNotNull(result);
-        verify(employeeRepository).findAll(any(PageRequest.class));
+        verify(employeeRepository).findAllWithOrganization(any(PageRequest.class));
     }
 
     // Test findById
