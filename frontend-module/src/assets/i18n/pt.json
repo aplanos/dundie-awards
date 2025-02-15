@@ -21,6 +21,7 @@
         "FEATURES": "Funcionalidades",
         "SEARCH": "Pesquisar...",
         "TABLE_PAGING": "Exibindo {first} a {last} de {totalRecords} entradas",
+        "FIELD_ID": "Id",
         "FIELD_NAME": "Nome",
         "FIELD_VERSION": "Versão",
         "FIELD_OWNER": "Proprietário",
@@ -52,6 +53,7 @@
         "ANALYTICS": "Análises",
         "EMPLOYEES": "Funcionários",
         "ACTIVITIES": "Atividades",
+        "ORGANIZATIONS": "Organização",
         "CONFIGURATION": "Configuração",
         "OPTIONS": "Opções",
         "LOGOUT": "Sair"

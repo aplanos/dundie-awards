@@ -1,0 +1,63 @@
+<div class="grid">
+    <div class="col-12">
+        <div class="card px-6 py-6">
+            <p-toast></p-toast>
+            <p-toolbar styleClass="mb-4">
+                <ng-template pTemplate="left">
+                    <div class="my-2">
+                    </div>
+                </ng-template>
+
+                <ng-template pTemplate="right">
+                </ng-template>
+            </p-toolbar>
+
+            <p-table #dt
+                     [loading]="loading"
+                     [scrollable]="true"
+                     scrollHeight="flex"
+                     [lazy]="true"
+                     [resizableColumns]="true"
+                     columnResizeMode="expand"
+                     dataKey="id"
+                     (onLazyLoad)="setPage($event)"
+                     [paginator]="true"
+                     [rowHover]="true"
+                     [value]="page.content"
+                     [rows]="page.page.size"
+                     [totalRecords]="page.page.totalElements"
+                     responsiveLayout="scroll"
+                     [rowsPerPageOptions]="[10,20,30]"
+                     [showCurrentPageReport]="true"
+                     currentPageReportTemplate="{{ 'COMMON.TABLE_PAGING' | translate }}"
+                     selectionMode="multiple">
+                <ng-template pTemplate="caption">
+                    <div class="flex flex-column md:flex-row md:justify-content-between md:align-items-center">
+                        <h5 class="m-0">{{ 'COMMON.MANAGE' | translate }}</h5>
+                    </div>
+                </ng-template>
+                <ng-template pTemplate="header">
+                    <tr>
+                        <th pSortableColumn="id">{{ 'COMMON.FIELD_ID' | translate }} <p-sortIcon field="id"></p-sortIcon></th>
+                        <th pSortableColumn="name">{{ 'COMMON.FIELD_NAME' | translate }} <p-sortIcon field="name"></p-sortIcon></th>
+                        <th></th>
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="body" let-row>
+                    <tr>
+                        <td style="width:14%; min-width:10rem;"><span class="p-column-title">{{ 'COMMON.FIELD_ID' | translate }} </span>
+                            {{ row.id }}
+                        </td>
+                        <td style="width:14%; min-width:10rem;"><span class="p-column-title">{{ 'COMMON.FIELD_NAME' | translate }} </span>
+                            {{row.name }}
+                        </td>
+                        <td>
+                            <div class="flex justify-content-end flex-wrap">
+                            </div>
+                        </td>
+                    </tr>
+                </ng-template>
+            </p-table>
+        </div>
+    </div>
+</div>

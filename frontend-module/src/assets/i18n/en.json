@@ -21,6 +21,7 @@
         "FEATURES": "Features",
         "SEARCH": "Search...",
         "TABLE_PAGING": "Displaying {first} to {last} of {totalRecords} entries",
+        "FIELD_ID": "Id",
         "FIELD_NAME": "Name",
         "FIELD_VERSION": "Version",
         "FIELD_OWNER": "Owner",
@@ -52,6 +53,7 @@
         "ANALYTICS": "Analytics",
         "EMPLOYEES": "Employees",
         "ACTIVITIES": "Activities",
+        "ORGANIZATIONS": "Organizations",
         "CONFIGURATION": "Configuration",
         "OPTIONS": "Options",
         "LOGOUT": "Log Out"
