@@ -51,7 +51,7 @@ export const httpInterceptor: HttpInterceptorFn = (req, next) => {
 
         function handleError(request: HttpRequest<any>, next: HttpHandlerFn, error: any): Observable<HttpEvent<any>> {
             console.log("error:", request.url);
-            if (error instanceof HttpErrorResponse && error.status === 401) {
+            if (error instanceof HttpErrorResponse && (error.status === 401 || error.status === 403)) {
                 // Handle 401 unauthorized error by trying to refresh the token
                 return handle401(request, next);
             } else {

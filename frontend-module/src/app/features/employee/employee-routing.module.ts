@@ -8,7 +8,8 @@ const routes: Routes = [
     {
         path: '',
         component: EmployeeComponent,
-        data: { permissions: [] }
+        data: { permissions: [] },
+        canActivate: [AuthGuard]
     }
 ];
 
