@@ -117,6 +117,8 @@ Login using the credentials guest/guest
 - Manages messages related to awarding users or entities.
 - Ensures that the awarding process is handled asynchronously to improve system performance.
 
+![img_5.png](img_5.png)
+
 ## Application UI
 
 ## Login
