@@ -3,7 +3,6 @@ package com.ninjaone.dundieawards.organization.infrastructure.rest;
 import com.ninjaone.dundieawards.organization.application.api.OrganizationControllerApi;
 import com.ninjaone.dundieawards.organization.application.dto.OrganizationModel;
 import com.ninjaone.dundieawards.organization.application.service.OrganizationService;
-import io.swagger.v3.oas.annotations.Parameter;
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.Positive;

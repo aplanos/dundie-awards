@@ -39,4 +39,8 @@ dependencies {
 
 	annotationProcessor "org.projectlombok:lombok:${versions.lombok}"
 	testImplementation "org.springframework.boot:spring-boot-starter-test:${versions.spring_boot}"
+
+	testImplementation 'org.testcontainers:testcontainers:1.20.4'
+	testImplementation 'org.testcontainers:postgresql:1.20.4'
+	testImplementation "org.testcontainers:rabbitmq:1.20.4"
 }
