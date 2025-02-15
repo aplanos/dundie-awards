@@ -18,6 +18,7 @@ export class EmployeeComponent {
     page = new Page<EmployeeModel>();
     loading = true;
 
+    totalAwards: number = 0;
     entityForm: FormGroup;
 
     constructor(
@@ -27,6 +28,10 @@ export class EmployeeComponent {
         this.entityForm = this.fb.group({
             name: ['', Validators.required]
         });
+
+        this.employeeService.getTotalAwards().subscribe(value => {
+            this.totalAwards = value.totalDundieAwards;
+        })
     }
 
     setPage(pageInfo?: any){

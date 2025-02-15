@@ -26,6 +26,7 @@ import { AccordionModule } from 'primeng/accordion';
 import { CheckboxModule } from 'primeng/checkbox';
 import { DropdownModule } from 'primeng/dropdown';
 import {EmployeeComponent} from "@features/employee/employee.component";
+import {BadgeModule} from "primeng/badge";
 
 @NgModule({
    declarations: [
@@ -33,6 +34,6 @@ import {EmployeeComponent} from "@features/employee/employee.component";
    ],
     imports: [CommonModule, EmployeeRoutingModule, SharedModule, MatDialogModule,
         FormsModule, SharedModule, TableModule,
-        ReactiveFormsModule, CardModule, InputTextModule, MessagesModule, TooltipModule, ButtonModule, BlockUIModule, ToastModule, ToolbarModule, FileUploadModule, RippleModule, DialogModule, TranslateModule, InputGroupAddonModule, InputGroupModule, PasswordModule, DividerModule, AccordionModule, CheckboxModule, DropdownModule]
+        ReactiveFormsModule, CardModule, InputTextModule, MessagesModule, TooltipModule, ButtonModule, BlockUIModule, ToastModule, ToolbarModule, FileUploadModule, RippleModule, DialogModule, TranslateModule, InputGroupAddonModule, InputGroupModule, PasswordModule, DividerModule, AccordionModule, CheckboxModule, DropdownModule, BadgeModule]
 })
 export class EmployeeModule {}

@@ -9,6 +9,7 @@
                 </ng-template>
 
                 <ng-template pTemplate="right">
+                    <span class="mr-2">Total Awards</span> <p-badge [value]="totalAwards" severity="success" />
                 </ng-template>
             </p-toolbar>
 
@@ -43,7 +44,6 @@
                         <th pSortableColumn="dundieAwards">{{ 'EMPLOYEE.AWARDS' | translate }} <p-sortIcon field="dundieAwards"></p-sortIcon></th>
                         <th pSortableColumn="organizationId">{{ 'EMPLOYEE.ORGANIZATION_ID' | translate }} <p-sortIcon field="organizationId"></p-sortIcon></th>
                         <th pSortableColumn="organizationName">{{ 'EMPLOYEE.ORGANIZATION_NAME' | translate }} <p-sortIcon field="organizationName"></p-sortIcon></th>
-                        <th></th>
                     </tr>
                 </ng-template>
                 <ng-template pTemplate="body" let-row>
@@ -65,10 +65,6 @@
                         <td style="width:14%; min-width:10rem;">
                             <span class="p-column-title">{{ 'EMPLOYEE.ORGANIZATION_NAME' | translate }} </span>
                             {{row.organizationName}}
-                        </td>
-                        <td>
-                            <div class="flex justify-content-end flex-wrap">
-                            </div>
                         </td>
                     </tr>
                 </ng-template>
