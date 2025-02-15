@@ -5,11 +5,12 @@ import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { Page } from '@core/models/paging.model';
 import { EmployeeModel } from '@core/models/employee.model';
+import {environment} from "@env";
 
 @Injectable({ providedIn: 'root' })
 export class EmployeeService {
 
-    private baseUrl = '/employees/v1';
+    baseUrl = `${environment.organizationUrl}/employees/v1`;
 
     private headers = new HttpHeaders().set('Content-Type', 'application/json');
 

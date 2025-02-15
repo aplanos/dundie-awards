@@ -1,4 +1,6 @@
 export const environment = {
     production: true,
-    apiUrl: 'https://dundieawards.dundermifflin.com'
+    activityUrl: 'https://activity.dundieawards.com',
+    organizationUrl: 'https://organization.dundieawards.com',
+    authUrl: 'https://auth.dundieawards.com'
 };

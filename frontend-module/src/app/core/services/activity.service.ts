@@ -4,13 +4,13 @@ import { LoadingBarService } from '@ngx-loading-bar/core';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { Page } from '@core/models/paging.model';
-import { EmployeeModel } from '@core/models/employee.model';
 import {ActivityModel} from "@core/models/activity.model";
+import {environment} from "@env";
 
 @Injectable({ providedIn: 'root' })
 export class ActivityService {
 
-    private baseUrl = '/activities/v1';
+    baseUrl = `${environment.activityUrl}/activities/v1`;
 
     private headers = new HttpHeaders().set('Content-Type', 'application/json');
 

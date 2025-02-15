@@ -8,9 +8,13 @@ import { BehaviorSubject, Observable } from 'rxjs';
 import { RoleEnum } from '@core/enums/role.enum';
 import { Router } from '@angular/router';
 import { LoadingBarService } from '@ngx-loading-bar/core';
+import { environment } from '@env';
+
 
 @Injectable({ providedIn: 'root' })
 export class AuthService {
+
+    baseUrl = `${environment.authUrl}/auth/v1`;
 
     public user: Observable<UserModel>;
     private userSubject: BehaviorSubject<UserModel>;
@@ -37,7 +41,7 @@ export class AuthService {
         const headers = this.headers
             .append('Identity', userDetails.username)
 
-        return this._http.post<UserModel>('/api-v1/auth/login', JSON.stringify(userDetails), {
+        return this._http.post<UserModel>(`${this.baseUrl}/login`, JSON.stringify(userDetails), {
             headers
         });
     }
@@ -49,7 +53,7 @@ export class AuthService {
     }
 
     isLoggedIn() {
-        return this.getToken() ? true : false; // add your strong logic
+        return !!this.getToken(); // add your strong logic
     }
 
     storeUser(user: UserModel) {
@@ -70,7 +74,7 @@ export class AuthService {
 
     refreshToken() {
         const body = new HttpParams().set(CONSTANTS.REFRESH_TOKEN, this.getRefreshToken()!);
-        return this._http.post<AuthToken>('/api-v1/auth/refresh', body.toString(), {
+        return this._http.post<AuthToken>(`${this.baseUrl}/refresh`, body.toString(), {
             headers: this.headers
         });
     }
