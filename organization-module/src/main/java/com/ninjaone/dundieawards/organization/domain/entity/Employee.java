@@ -27,7 +27,7 @@ public class Employee {
     @Column(name = "organization_id")
     private long organizationId;
 
-    @Column(name = "organization_id")
+    @Column(name = "deleted")
     private boolean deleted;
 
     public Employee(String firstName, String lastName, long organizationId) {

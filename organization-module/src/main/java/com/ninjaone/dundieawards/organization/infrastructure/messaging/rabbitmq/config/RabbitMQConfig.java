@@ -98,7 +98,10 @@ public class RabbitMQConfig {
     @Bean
     @Qualifier("activityRollbackQueue")
     public Queue activityRollbackQueue() {
-        return new Queue(properties.getActivityRollbackQueueName(), true);
+        return QueueBuilder.durable(properties.getActivityRollbackQueueName())
+                .deadLetterExchange("dlx.exchange") // Set DLX
+                .deadLetterRoutingKey("dlq.routing.key") // Route to DLQ
+                .build();
     }
 
     @Bean
@@ -118,5 +121,24 @@ public class RabbitMQConfig {
         rabbitTemplate.setExchange(properties.getActivityExchangeName());
         rabbitTemplate.setRoutingKey(properties.getActivityRollbackRoutingKey());
         return rabbitTemplate;
+    }
+
+    @Bean
+    @Qualifier("activityRollbackDeadLetterQueue")
+    public Queue activityRollbackDeadLetterQueue() {
+        return QueueBuilder.durable(String.format("%s_dlq", properties.getActivityRollbackQueueName()))
+                .build();
+    }
+
+    @Bean
+    public DirectExchange deadLetterExchange() {
+        return new DirectExchange("dlx.exchange");
+    }
+
+    @Bean
+    public Binding deadLetterBinding() {
+        return BindingBuilder.bind(activityRollbackDeadLetterQueue())
+                .to(deadLetterExchange())
+                .with("dlq.routing.key");
     }
 }

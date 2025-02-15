@@ -42,7 +42,7 @@ public class InternalUser {
     @Column(name = "updated_by")
     private Long updatedBy;
 
-    @Column(name = "deleted_at")
-    private Instant deletedAt;
+    @Column(name = "deleted")
+    private boolean deleted;
 }
 
