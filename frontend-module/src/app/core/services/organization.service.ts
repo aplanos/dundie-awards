@@ -42,4 +42,8 @@ export class OrganizationService {
     update(id: number, model: OrganizationModel): Observable<OrganizationModel> {
         return this.http.put<OrganizationModel>(`${this.baseUrl}/${id}`, model);
     }
+
+    giveAwards(organizationId: number) {
+        return this.http.post<OrganizationModel>(`${this.baseUrl}/give-dundie-awards/${organizationId}`, null);
+    }
 }

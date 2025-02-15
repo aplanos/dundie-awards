@@ -44,4 +44,18 @@ export class OrganizationComponent {
             }
         });
     }
+
+    giveAwards(organizationId: number) {
+        this.loading = true;
+
+
+        this.organizationService.giveAwards(organizationId).subscribe({
+            next: () => {
+                this.loading = false;
+            },
+            error: () => {
+                this.loading = false;
+            }
+        });
+    }
 }
