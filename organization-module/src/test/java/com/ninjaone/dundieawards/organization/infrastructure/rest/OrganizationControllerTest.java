@@ -1,20 +1,24 @@
 package com.ninjaone.dundieawards.organization.infrastructure.rest;
 
 
+import com.ninjaone.dundieawards.organization.application.messaging.UpdateDundieAwardsMessageHandler;
 import com.ninjaone.dundieawards.organization.application.service.EmployeeService;
 import com.ninjaone.dundieawards.organization.application.service.OrganizationService;
 import org.junit.ClassRule;
-import org.junit.Ignore;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.junit.runner.RunWith;
+import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
+import org.mockito.junit.MockitoJUnitRunner;
+import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.context.annotation.Profile;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
@@ -22,6 +26,7 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.test.context.DynamicPropertyRegistry;
 import org.springframework.test.context.DynamicPropertySource;
 import org.springframework.test.web.servlet.MockMvc;
+import org.testcontainers.containers.GenericContainer;
 import org.testcontainers.containers.PostgreSQLContainer;
 import org.testcontainers.containers.RabbitMQContainer;
 import org.testcontainers.utility.DockerImageName;
@@ -35,6 +40,8 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @SpringBootTest
 @Disabled
 @AutoConfigureMockMvc(addFilters = false)
+@ExtendWith(MockitoExtension.class)
+@RunWith(MockitoJUnitRunner.class)
 class OrganizationControllerTest {
 
     @ClassRule
@@ -48,8 +55,13 @@ class OrganizationControllerTest {
             DockerImageName.parse("rabbitmq:3.12-management")
     );
 
+    @ClassRule
+    public static GenericContainer<?> redis = new GenericContainer<>(DockerImageName.parse("redis:7.0"))
+            .withExposedPorts(6379);
+
     static {
         rabbitMQContainer.start();
+        redis.start();
     }
 
 
@@ -70,13 +82,18 @@ class OrganizationControllerTest {
     @Mock
     private EmployeeService employeeService;
 
+    @InjectMocks
+    private UpdateDundieAwardsMessageHandler updateDundieAwardsMessageHandler;
+
+    @InjectMocks
+    private OrganizationController controller;
+
     @BeforeEach
     void setUp() {
         MockitoAnnotations.openMocks(this);
     }
 
     @Test
-    @Ignore
     void testGiveDundieAwards_Success() throws Exception {
 
         Long organizationId = 1L;
@@ -93,7 +110,6 @@ class OrganizationControllerTest {
     }
 
     @Test
-    @Ignore
     void testGiveDundieAwards_InvalidOrganizationId() throws Exception {
 
         Mockito.doNothing().when(organizationService).giveAwards(anyLong(), anyLong());
