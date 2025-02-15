@@ -33,4 +33,7 @@ public class EmployeeModel {
     @Schema(description = "Identifier of the organization the employee belongs to", example = "100")
     @NotNull(message = "Organization ID cannot be null")
     private Long organizationId;
+
+    @Schema(description = "Name of the organization the employee belongs to", example = "100")
+    private String organizationName;
 }

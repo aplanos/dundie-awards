@@ -51,8 +51,8 @@ public class EmployeeServiceImpl implements EmployeeService {
         );
 
         final var employees = specification == null
-                ? employeeRepository.findAll(pageRequest)
-                : employeeRepository.findAll(specification, pageRequest);
+                ? employeeRepository.findAllWithOrganization(pageRequest)
+                : employeeRepository.findAllWithOrganization(specification, pageRequest);
 
         var models =  employees.getContent()
                 .stream()

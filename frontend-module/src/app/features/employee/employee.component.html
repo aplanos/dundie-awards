@@ -38,11 +38,11 @@
                 </ng-template>
                 <ng-template pTemplate="header">
                     <tr>
-                        <th pSortableColumn="name">{{ 'COMMON.FIELD_FIRSTNAME' | translate }} <p-sortIcon field="firstName"></p-sortIcon></th>
-                        <th pSortableColumn="name">{{ 'COMMON.FIELD_LASTNAME' | translate }} <p-sortIcon field="lastName"></p-sortIcon></th>
-                        <th pSortableColumn="createdAt">{{ 'EMPLOYEE.AWARDS' | translate }} <p-sortIcon field="dundieAwards"></p-sortIcon></th>
-                        <th pSortableColumn="createdAt">{{ 'EMPLOYEE.ORGANIZATION_ID' | translate }} <p-sortIcon field="organizationId"></p-sortIcon></th>
-                        <th pSortableColumn="createdAt">{{ 'EMPLOYEE.ORGANIZATION_NAME' | translate }} <p-sortIcon field="organizationId"></p-sortIcon></th>
+                        <th pSortableColumn="firstName">{{ 'COMMON.FIELD_FIRSTNAME' | translate }} <p-sortIcon field="firstName"></p-sortIcon></th>
+                        <th pSortableColumn="lastName">{{ 'COMMON.FIELD_LASTNAME' | translate }} <p-sortIcon field="lastName"></p-sortIcon></th>
+                        <th pSortableColumn="dundieAwards">{{ 'EMPLOYEE.AWARDS' | translate }} <p-sortIcon field="dundieAwards"></p-sortIcon></th>
+                        <th pSortableColumn="organizationId">{{ 'EMPLOYEE.ORGANIZATION_ID' | translate }} <p-sortIcon field="organizationId"></p-sortIcon></th>
+                        <th pSortableColumn="organizationName">{{ 'EMPLOYEE.ORGANIZATION_NAME' | translate }} <p-sortIcon field="organizationName"></p-sortIcon></th>
                         <th></th>
                     </tr>
                 </ng-template>
@@ -64,7 +64,7 @@
                         </td>
                         <td style="width:14%; min-width:10rem;">
                             <span class="p-column-title">{{ 'EMPLOYEE.ORGANIZATION_NAME' | translate }} </span>
-                            {{row.organizationId}}
+                            {{row.organizationName}}
                         </td>
                         <td>
                             <div class="flex justify-content-end flex-wrap">
