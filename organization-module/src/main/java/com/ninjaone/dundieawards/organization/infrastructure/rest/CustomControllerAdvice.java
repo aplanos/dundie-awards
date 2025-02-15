@@ -1,4 +1,4 @@
-package com.ninjaone.dundieawards.auth.infrastructure.security;
+package com.ninjaone.dundieawards.organization.infrastructure.rest;
 
 import com.ninjaone.dundieawards.common.infrastructure.security.models.ErrorResponse;
 import org.springframework.http.HttpStatus;

@@ -1,4 +1,4 @@
-package com.ninjaone.dundieawards.auth.infrastructure.security.models;
+package com.ninjaone.dundieawards.common.infrastructure.security.models;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Getter;
