@@ -25,6 +25,7 @@ import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpHeaders;
 import org.springframework.test.context.DynamicPropertyRegistry;
 import org.springframework.test.context.DynamicPropertySource;
+import org.springframework.test.context.bean.override.mockito.MockitoBean;
 import org.springframework.test.web.servlet.MockMvc;
 import org.testcontainers.containers.GenericContainer;
 import org.testcontainers.containers.PostgreSQLContainer;
@@ -37,8 +38,8 @@ import static org.mockito.Mockito.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-@SpringBootTest
 @Disabled
+@SpringBootTest
 @AutoConfigureMockMvc(addFilters = false)
 @ExtendWith(MockitoExtension.class)
 @RunWith(MockitoJUnitRunner.class)
@@ -76,10 +77,10 @@ class OrganizationControllerTest {
     @Autowired
     private MockMvc mockMvc;
 
-    @Mock
+    @MockitoBean
     private OrganizationService organizationService;
 
-    @Mock
+    @MockitoBean
     private EmployeeService employeeService;
 
     @InjectMocks
@@ -112,11 +113,13 @@ class OrganizationControllerTest {
     @Test
     void testGiveDundieAwards_InvalidOrganizationId() throws Exception {
 
+        Long organizationId = -1L;
+
         Mockito.doNothing().when(organizationService).giveAwards(anyLong(), anyLong());
         when(employeeService.findAllByOrganizationId(anyInt(), anyInt(), anyLong()))
                 .thenReturn(new PageImpl<>(Collections.emptyList(), PageRequest.of(0,1, Sort.by("id")), 0));
 
-        mockMvc.perform(post("/organizations/v1/give-dundie-awards/{organizationId}", -1L)
+        mockMvc.perform(post("/organizations/v1/give-dundie-awards/{organizationId}", organizationId)
                 .header(HttpHeaders.AUTHORIZATION, "Bearer any"))
                 .andExpect(status().isBadRequest()); // Should fail due to @Positive constraint
     }

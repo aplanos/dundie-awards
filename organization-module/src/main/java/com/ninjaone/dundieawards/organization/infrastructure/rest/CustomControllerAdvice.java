@@ -1,6 +1,7 @@
 package com.ninjaone.dundieawards.organization.infrastructure.rest;
 
 import com.ninjaone.dundieawards.common.infrastructure.security.models.ErrorResponse;
+import jakarta.validation.ConstraintViolationException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authorization.AuthorizationDeniedException;
@@ -34,6 +35,22 @@ public class CustomControllerAdvice {
                         "You do not have permission to access this resource."
                 ),
                 HttpStatus.FORBIDDEN
+        );
+    }
+
+    @ExceptionHandler(ConstraintViolationException.class) // exception handled
+    public ResponseEntity<ErrorResponse> handleConstraintViolatedExceptions(
+            Exception e
+    ) {
+
+        var status = HttpStatus.BAD_REQUEST;
+
+        return new ResponseEntity<>(
+                new ErrorResponse(
+                        status,
+                        e.getMessage()
+                ),
+                status
         );
     }
 
