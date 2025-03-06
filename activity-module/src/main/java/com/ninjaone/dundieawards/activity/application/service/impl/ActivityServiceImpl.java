@@ -40,12 +40,12 @@ public class ActivityServiceImpl implements ActivityService {
 
     @Override
     public Page<ActivityModel> findAll(int page, int pageSize) {
-        return findAll(page, pageSize, Collections.singletonList("id"), null);
+        return findAll(page, pageSize, Collections.singletonList("updatedAt"), null);
     }
 
     private Page<ActivityModel> findAll(int page, int pageSize, List<String> sortKeys, Specification<Activity> specification) {
         var pageRequest = PageRequest.of(page, pageSize,
-                Sort.by(Sort.Direction.ASC, sortKeys.toArray(new String[0]))
+                Sort.by(Sort.Direction.DESC, sortKeys.toArray(new String[0]))
         );
 
         final var employees = specification == null
