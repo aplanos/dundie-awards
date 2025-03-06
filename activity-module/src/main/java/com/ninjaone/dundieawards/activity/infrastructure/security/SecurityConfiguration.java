@@ -4,7 +4,6 @@ import com.ninjaone.dundieawards.common.infrastructure.security.JwtTokenFilter;
 import lombok.AllArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Profile;
 import org.springframework.security.authorization.AuthorizationDecision;
 import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -27,7 +26,6 @@ import java.util.List;
 @EnableWebSecurity
 @AllArgsConstructor
 @EnableMethodSecurity(securedEnabled = true)
-@Profile(value = {"dev", "prd"})
 public class SecurityConfiguration {
 
     private final JwtTokenFilter jwtAuthenticationFilter;
