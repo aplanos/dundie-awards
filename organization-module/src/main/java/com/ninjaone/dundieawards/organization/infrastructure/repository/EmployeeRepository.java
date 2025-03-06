@@ -20,18 +20,18 @@ import java.util.Set;
 public interface EmployeeRepository extends JpaRepository<Employee, Long>, JpaSpecificationExecutor<Employee> {
 
     @Query("""
-        SELECT e.id AS id, e.firstName AS firstName, e.lastName AS lastName, 
+        SELECT e.id AS id, e.firstName AS firstName, e.lastName AS lastName,
                e.dundieAwards AS dundieAwards, o.id AS organizationId, o.name AS organizationName
         FROM Employee e
-        JOIN Organization o ON e.organizationId = o.id
+        JOIN Organization o ON e.organizationId = o.id where e.deleted = false
     """)
     Page<EmployeeListItemProjection> findAllWithOrganization(Pageable pageable);
 
     @Query("""
-        SELECT e.id AS id, e.firstName AS firstName, e.lastName AS lastName, 
+        SELECT e.id AS id, e.firstName AS firstName, e.lastName AS lastName,
                e.dundieAwards AS dundieAwards, o.id AS organizationId, o.name AS organizationName
         FROM Employee e
-        JOIN Organization o ON e.organizationId = o.id
+        JOIN Organization o ON e.organizationId = o.id where e.deleted = false
     """)
     Page<EmployeeListItemProjection> findAllWithOrganization(@Param("spec") Specification<Employee> spec, Pageable pageable);
 
@@ -40,6 +40,6 @@ public interface EmployeeRepository extends JpaRepository<Employee, Long>, JpaSp
     @Query("UPDATE Employee e SET e.dundieAwards = e.dundieAwards + :amount WHERE e.id IN :employeeIds")
     void updateEmployeesAwards(Set<Long> employeeIds, long amount);
 
-    @Query("SELECT SUM(e.dundieAwards) as totalDundieAwards FROM Employee e")
+    @Query("SELECT SUM(e.dundieAwards) as totalDundieAwards FROM Employee e where e.deleted = false")
     AwardSummaryStatsProjection getAwardSummaryStats();
 }

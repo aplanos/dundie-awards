@@ -67,7 +67,7 @@ public class EmployeeController implements EmployeeApi {
         return ResponseEntity.ok(updatedEmployee);
     }
 
-    @DeleteMapping("/employees/{id}")
+    @DeleteMapping("/{id}")
     @PreAuthorize("hasAuthority('employee_manage')")
     public ResponseEntity<?> deleteEmployee(@PathVariable @Positive Long id) {
         employeeService.delete(id);

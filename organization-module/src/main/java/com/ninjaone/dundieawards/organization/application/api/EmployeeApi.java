@@ -86,7 +86,7 @@ public interface EmployeeApi {
                             content = @Content(mediaType = "application/json", schema = @Schema(implementation = Map.class))),
                     @ApiResponse(responseCode = "404", description = "Employee not found")
             })
-    @DeleteMapping("/employees/{id}")
+    @DeleteMapping("/{id}")
     ResponseEntity<?> deleteEmployee(
             @Parameter(description = "ID of the employee to be deleted") @PathVariable @Positive Long id
     );
